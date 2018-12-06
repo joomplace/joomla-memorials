@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+	<name>COM_JOOMPORTFOLIO</name>
+	<creationDate>March 2014</creationDate>
+	<author>JoomPlace Team</author>
+	<authorEmail>support@joomplace.com</authorEmail>
+	<authorUrl>www.joomplace.com</authorUrl>
+	<copyright>(C) JoomPlace, www.joomplace.com</copyright>
+	<license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
+	<version>2.1.1 (build 001)</version>
+	<scriptfile>script.php</scriptfile>
+
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>joomportfolio.php</filename>
+		<filename>controller.php</filename>
+		<filename>router.php</filename>
+		<folder>assets</folder>
+		<folder>helpers</folder>
+		<folder>views</folder>
+		<folder>models</folder>
+		<folder>controllers</folder>
+            
+	</files>
+	
+	<files folder="images" >
+		<filename>index.html</filename>
+	</files>
+
+	<administration>
+		<menu img="components/com_joomportfolio/assets/images/jp_menu_pic.gif" >COM_JOOMPORTFOLIO_MENU</menu>
+		<submenu>
+			
+			<menu link="option=com_joomportfolio&amp;view=categories" view="categories" img="components/com_joomportfolio/assets/images/categories_jp.png" alt="COM_JOOMPORTFOLIO_SUBMENU_CATEGORIES">COM_JOOMPORTFOLIO_SUBMENU_CATEGORIES</menu>
+			<menu link="option=com_joomportfolio&amp;view=fields" view="fields" img="components/com_joomportfolio/assets/images/custom_jp.png" alt="COM_JOOMPORTFOLIO_SUBMENU_FIELDS">COM_JOOMPORTFOLIO_SUBMENU_FIELDS</menu>
+			<menu link="option=com_joomportfolio&amp;view=items" view="items" img="components/com_joomportfolio/assets/images/items_jp.png" alt="COM_JOOMPORTFOLIO_SUBMENU_ITEMS">COM_JOOMPORTFOLIO_SUBMENU_ITEMS</menu>
+            <menu link="option=com_joomportfolio&amp;view=comments" view="comments" img="components/com_joomportfolio/assets/images/comments_jp.png" alt="COM_JOOMPORTFOLIO_SUBMENU_COMMENTS">COM_JOOMPORTFOLIO_SUBMENU_COMMENTS</menu>
+            <menu link="option=com_joomportfolio&amp;view=templates" view="templates" img="components/com_joomportfolio/assets/images/templates_jp.png" alt="COM_JOOMPORTFOLIO_SUBMENU_TEMPLATES">COM_JOOMPORTFOLIO_SUBMENU_TEMPLATES</menu>
+        </submenu>
+		<files folder="admin" >
+			<filename>index.html</filename>
+			<filename>config.xml</filename>
+			<filename>access.xml</filename>
+			<filename>joomportfolio.php</filename>
+			<filename>controller.php</filename>
+			<filename>GNU-General-Public-License.txt</filename>
+			<filename>changelog.txt</filename>
+			<folder>assets</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+			<folder>controllers</folder>
+			<folder>helpers</folder>
+		</files>
+
+		<languages folder="admin">
+			<language tag="en-GB">languages/en-GB/en-GB.com_joomportfolio.ini</language>
+			<language tag="en-GB">languages/en-GB/en-GB.com_joomportfolio.sys.ini</language>
+		</languages>
+	</administration>
+	
+	<media destination="com_joomportfolio" >
+		<filename>custom_empty.xml</filename>
+	</media>
+</extension>

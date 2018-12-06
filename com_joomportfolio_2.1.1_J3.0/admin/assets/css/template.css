@@ -1,0 +1,30 @@
+@charset "UTF-8";
+/*
+ * jQuery File Upload Plugin CSS Example 1.1.1
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2012, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+.template_custom {
+    background-color: #fff;
+    padding: 5px 17px 17px 17px;
+    margin-bottom: 10px;
+    border: 1px #ccc solid;
+    text-align: left;
+    display: inline;
+}
+
+.template_custom legend {
+    border-bottom: none;
+    margin-bottom: 0px;
+}
+
+.button2-left{
+    float:left;
+    margin-right: 5px;
+}

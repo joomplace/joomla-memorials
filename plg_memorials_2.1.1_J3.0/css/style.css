@@ -1,0 +1,377 @@
+.jp-main_page:hover {
+    border-style: dotted;
+    border-color: blue;
+}
+
+.jp-main_page {
+    border: 1px solid transparent;
+    border-width: 1px;
+    width: 22%;
+}
+
+.jp-main-cat h1.title {
+    font-weight: normal;
+    margin-top: 10px;
+    font-family: Arial, Helvetica;
+    color: #1d85dc;
+    text-shadow: none;
+    text-align: center;
+}
+
+.jp-subcategory_title:first-child {
+    text-decoration: underline;
+}
+
+p.jp-subline {
+    color: #808080;
+}
+
+div.jp-photo-container {
+    padding: 10px;
+    border: 1px solid #DDD;
+}
+
+.portfolioContent div.item-heading{
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 7px;
+    text-align: center;
+    color: #0D4C89;
+}
+
+.description-container div.item-heading {
+    font-size: 24px;
+
+    color: #0D4C89;
+    }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#tabsnav {
+    margin: 20px 0 0 20px;
+}
+
+.jp-tabs li.active > a {
+    background: white !important;
+    margin-bottom: -3px;
+}
+
+.jp-tabs {
+    /*float: left;*/
+    width: 98%;
+}
+
+table tr.odd:hover td,
+table tr.even:hover td {
+    background-color: #e8f6fe;
+}
+
+.jp-post-comment li {
+    list-style: none;
+}
+
+.jp-post-comment {
+    background: none repeat scroll 0 0 #F8F9FA;
+    border: 1px solid #C8C8C8;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.jp-post-not-comment {
+    background: none repeat scroll 0 0 #F8F9FA;
+    border: 1px solid #C8C8C8;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+#commentListFormDiv {
+    float: left;
+    width: 95%;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+
+    clear: both;
+    overflow: hidden;
+    padding: 12px 12px 12px 12px;
+    margin: 10px 0;
+}
+
+.portfolio-social {
+    margin: 14px 0 0 0;
+    display: inline-block;
+}
+
+.portfolio-social-btn {
+    float: right;
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+
+.portfolio-social-item {
+    margin-bottom: 40px;
+    text-align: right;
+    float: left;
+}
+
+#superbox-overlay {
+    background: #e0e4cc;
+}
+
+#superbox-container .loading {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto;
+    text-indent: -9999px;
+    background: url(styles/loader.gif) no-repeat 0 0;
+}
+
+#superbox .close a {
+    float: right;
+    padding: 0 5px;
+    line-height: 20px;
+    background: #333;
+    cursor: pointer;
+}
+
+#superbox .close a span {
+    color: #fff;
+}
+
+#superbox .nextprev a {
+    float: left;
+    margin-right: 5px;
+    padding: 0 5px;
+    line-height: 20px;
+    background: #333;
+    cursor: pointer;
+    color: #fff;
+}
+
+.jp-categories .jp-main_page_1_cat {
+    width: 100%;
+}
+
+.jp-categories .jp-main_page_2_cat {
+    width: 47%;
+}
+
+.jp-categories .jp-main_page_3_cat {
+    width: 31%;
+}
+
+.site-title {
+    font-weight: normal;
+    margin-top: 10px;
+    font-family: Arial, Helvetica;
+    color: #1d85dc;
+    text-shadow: none;
+    text-align: center;
+}
+
+.jp-main_page_3_cat .main-img {
+    width: 100px;
+    height: 100px;
+    margin-right: 3px;
+    margin-top: 5px;
+}
+
+div.jp-subcategory_title {
+    text-align: center;
+    font-size: 18px;
+    color: #0D4C89;
+    padding: 5px 0 3px 0;
+    color: #516C7B;
+}
+
+.jp-subcategory_title a {
+    font-weight: bold;
+}
+
+.jp-subline-subcat {
+    color: #808080;
+}
+
+.jp-item-dates {
+    text-align: center;
+    padding: 10px 0 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+.jp-separate {
+    width: 100%;
+    border-top: 1px dotted #CCC;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.comment-wrap {
+    margin: 5px 3px 10px;
+    background-color: #FFF;
+    border: 1px solid #C8C8C8;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.comment-info {
+    margin-top: 5px;
+}
+
+.jp-photo-container {
+    margin-right: -150px;
+}
+
+.description-container {
+    padding-left: 150px;
+}
+
+.addButons {
+    float: right;
+    margin-bottom: 10px;
+}
+
+#candle-image {
+    background-color: #0088CC;
+    border: medium none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 2px;
+    padding: 3px 10px;
+}
+
+.ornament-item {
+    float: left;
+    margin-right: 5px;
+}
+
+.image-container {
+    text-align: center;
+    float: left;
+    margin: 3px;
+    height: 100px;
+}
+
+.image-container:hover {
+    border: 3px solid #ffff00;
+}
+
+.image-container {
+    border: 3px solid transparent;
+}
+
+.image-container img{
+    height: 100px;
+}
+
+.ornament-submit, .condolence-submit{
+    margin-bottom: 5px;
+}
+
+div.jp-main-cat {
+    height: auto;
+}
+
+
+.jportfrate-stars{
+    float:left;
+}
+
+.alpha_search{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.jp-info{
+    color: #999;
+}
+
+.jp-category-name, .jp-published, .jp-hits{
+    margin-left: 10px;
+}
+
+.jp-not-found-wrapp{
+    margin:10px;
+}
+
+.jp-category_readmore{
+    margin-top: 25px;
+}
+
+.jp-audio-info{
+    color: #11548A;
+    border-color: #C2E1FB;
+    background-image: url(../images/information.png);
+    background-repeat: no-repeat;
+    padding-left: 25px;
+    vertical-align: top;
+}
+
+.jp-comment-textarea{
+    width: 90%;
+}
+
+.jp-comment-form{
+    border: 1px solid #C8C8C8;;
+    padding-left: 5%;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.jp-post-comment {
+    width: 95%;
+    margin: 10px 0;
+    padding-top: 10px;
+    border-top: 1px solid #C8C8C8;
+    background-color: white;
+    padding-left: 20px;
+}
+
+.jp-comment-info {
+    color: #777777;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.jp-comuser-name {
+    color: #000000;
+    font-size: 1.4em;
+    height: 40px;
+    line-height: 40px;
+    text-transform: capitalize;
+    padding-right: 5px;
+}
+
+.jp-post-date {
+    color: #AAAAAA;
+    font-size: 0.9em !important;
+}
+
+.jp-commenttext {
+    font-size: 0.9em;
+    padding-bottom: 10px;
+}
+
+.jp-post-not-comment li{
+    list-style: none;
+}
+
+#jp-mem-user-name{
+    margin-top: 10px;
+}
+
+.jp-main-page {
+    overflow: hidden;
+}
+
+.main-img img{
+    width: 100%;
+}

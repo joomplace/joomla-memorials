@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata
+        addfieldpath="/administrator/components/com_joomportfolio/models/fields"
+        >
+    <layout title="COM_JOOMPORTFOLIO_VIEW_ITEM_TITLE">
+        <message>COM_JOOMPORTFOLIO_VIEW_ITEM_DESC</message>
+    </layout>
+    <fields
+            name="request"
+            >
+
+        <fieldset name="request">
+            <field
+                    name="mode"
+                    type="sql"
+                    query="SELECT element FROM #__extensions WHERE type='plugin' AND folder='portfolio'"
+                    key_field="element"
+                    value_field="element"
+                    label="COM_JOOMPORTFOLIO_MODE"
+                    description="COM_JOOMPORTFOLIO_MODE_DESC"
+                    onchange="jQuery.ajax({ url: 'index.php?option=com_joomportfolio&amp;task=item.replace_str_in_xml',
+                                          type: 'POST', data: { element: this.value},
+                                          success: function(json){
+                                          url = location.href; var data = jQuery.parseJSON(json);
+                                          jQuery('#select_item_chzn').remove();
+                                          jQuery('#select_item').find('option').remove().end().append
+                                          (data); jQuery('#select_item').show();
+                                           }
+                                          });"
+                    />
+
+        </fieldset>
+    </fields>
+    <fields
+            name="params"
+            >
+        <fieldset
+                name="item"
+                label="COM_JOOMPORTFOLIO_SETTINGS_ITEM_MENU"
+                >
+            <field
+                name="id"
+                class="item_opt"
+                type="customsqlitem"
+                label="COM_JOOMPORTFOLIO_VIEW_ITEM_TITLE"
+                description="COM_JOOMPORTFOLIO_VIEW_ITEM_DESC"
+                required="true"
+                onchange="var mode=jQuery('#jform_request_mode').val(); jQuery('#jform_link').val('index.php?option=com_joomportfolio&amp;view=item&amp;id='+this.value+'&amp;extension='+mode)"
+                    />
+
+        </fieldset>
+    </fields>
+</metadata>
+

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset
+		name="details"
+		label="COM_JOOMPORTFOLIO_FIELDSET_DETAILS"
+	>
+        <field	name="id" type="hidden" />
+		<field
+			name="name"
+			type="text"
+			label="COM_JOOMPORTFOLIO_FIELD_HEADING_NAME"
+			size="40"
+			required="true"
+			class="inputbox validate-subject"
+            description="COM_JOOMPORTFOLIO_FIELD_HEADING_NAME_DESC"
+			default=""
+		/>
+		<field
+			name="label"
+			type="text"
+			label="COM_JOOMPORTFOLIO_FIELD_HEADING_LABEL"
+			size="40"
+			required="true"
+			class="inputbox"
+			default=""
+		/>
+		<field
+			name="type"
+			type="list"
+			label="COM_JOOMPORTFOLIO_FIELD_HEADING_TYPE"
+			required="true"
+			class="inputbox"
+			default="text"
+			id="field-type"
+		>
+			<option value="text" >COM_JOOMPORTFOLIO_FIELD_TYPE_OPTION_TEXT</option>
+			<option value="textarea" >COM_JOOMPORTFOLIO_FIELD_TYPE_OPTION_TEXTAREA</option>
+			<option value="calendar" >COM_JOOMPORTFOLIO_FIELD_TYPE_OPTION_CALENDAR</option>
+			<option value="textemail" >COM_JOOMPORTFOLIO_FIELD_TYPE_OPTION_EMAIL</option>
+			<option value="url" >COM_JOOMPORTFOLIO_FIELD_TYPE_OPTION_URL</option>
+		</field>
+
+        <field
+                name="format"
+                type="listdate"
+                label="COM_JOOMPORTFOLIO_FIELD_HEADING_FORMAT"
+                class="inputbox"
+                default="text"
+                id="field-format"
+                >
+
+        </field>
+
+		<field
+			name="default"
+			type="text"
+			label="COM_JOOMPORTFOLIO_FIELD_HEADING_DEFAULT"
+			size="40"
+			required="false"
+			class="inputbox"
+			default=""
+		/>
+		<field
+			name="required"
+			type="radio"
+			label="COM_JOOMPORTFOLIO_FIELD_HEADING_REQUIRED"
+			required="false"
+			class="btn-group"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="catview"
+			type="radio"
+			label="COM_JOOMPORTFOLIO_FIELD_HEADING_CATVIEW"
+			required="false"
+			class="btn-group"
+			default="0"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+	</fieldset>
+	
+</form>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_JOOMPORTFOLIO_VIEW_MAIN_TITLE" ></layout>
+         
+	<fields
+		name="params"
+                
+	>
+          
+		<fieldset
+			name="main"
+			label="COM_JOOMPORTFOLIO_SETTINGS_GLOBAL_MENU"
+		>
+            <field
+				name="mode"
+				type="sql"
+                query="SELECT element FROM #__extensions WHERE type='plugin' AND folder='portfolio' UNION SELECT 'Select Mode' FROM #__extensions WHERE type='plugin' AND folder='portfolio'  ORDER BY element DESC"
+                key_field="element"
+				value_field="element"
+				label="COM_JOOMPORTFOLIO_MODE"
+				description="COM_JOOMPORTFOLIO_MODE_DESC"
+                required="true"
+				onchange="jQuery('#jform_link').val('index.php?option=com_joomportfolio&amp;view=main&amp;extension='+this.value)"
+			/>
+			
+		</fieldset>
+			<field name="item_title" type="radio" default="1"
+				label="COM_JOOMPORTFOLIO_SETTINGS_CATEGORY_TITLE" 
+				description="COM_JOOMPORTFOLIO_SETTINGS_CATEGORY_TITLE_DESC">
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			
+			<field name="item_description" type="radio"	default="1"	
+				label="COM_JOOMPORTFOLIO_SETTINGS_CATEGORY_DESCRIPTION" 
+				description="COM_JOOMPORTFOLIO_SETTINGS_CATEGORY_DESCRIPTION_DESC">
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+
+			<field name="item_plugin_enabled" type="radio" default="0" 
+					label="COM_JOOMPORTFOLIO_SETTINGS_PLUGIN" 
+					description="COM_JOOMPORTFOLIO_SETTINGS_PLUGIN_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			
+			<field name="item_hits_enabled" type="radio" default="1" 
+					label="COM_JOOMPORTFOLIO_SETTINGS_HITS" 
+					description="COM_JOOMPORTFOLIO_SETTINGS_HITS_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field name="item_rating_enabled" type="radio" default="1" 
+					label="COM_JOOMPORTFOLIO_SETTINGS_RATING" 
+					description="COM_JOOMPORTFOLIO_SETTINGS_RATING_DESC">
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+
+			<field name="item_custom_enabled" type="radio" default="1" 
+					label="COM_JOOMPORTFOLIO_SETTINGS_CUSTOM" 
+					description="COM_JOOMPORTFOLIO_SETTINGS_CUSTOM_DESC">
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+
+			<field name="item_comment_enable" type="radio" default="0" 
+					label="COM_JOOMPORTFOLIO_SETTINGS_COMMENT" 
+					description="COM_JOOMPORTFOLIO_SETTINGS_COMMENT_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field name="item_bookmark_enable" type="radio" default="0" 
+					label="COM_JOOMPORTFOLIO_SETTINGS_BOOKMARK" 
+					description="COM_JOOMPORTFOLIO_SETTINGS_BOOKMARK_DESC">
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+
+			<field name="item_preview_width" type="text" default="300" size="5"
+					label="COM_JOOMPORTFOLIO_SETTINGS_ITEM_IMAGE_WIDTH" 
+					description="COM_JOOMPORTFOLIO_SETTINGS_ITEM_IMAGE_WIDTH_DESC">
+			</field>
+			
+			<field name="item_preview_height" type="text" default="300" size="5"
+					label="COM_JOOMPORTFOLIO_SETTINGS_ITEM_IMAGE_HEIGHT" 
+					description="COM_JOOMPORTFOLIO_SETTINGS_ITEM_IMAGE_HEIGHT_DESC">
+			</field>
+		
+	</fields>
+</metadata>

@@ -1,0 +1,49 @@
+/*
+sections
+*/
+.joomportfsec {
+  text-decoration: none;
+}
+.joomportfsec li {
+    list-style-image: url(select.png);
+   font-weight: bold;
+}
+.joomportfsec li:hover {
+   cursor: pointer;
+   list-style-image: url(selected.png);
+}
+/*
+catalogs
+*/
+.joomportfcat {
+	margin: 0px;
+}
+
+.joomportfcat ul{
+	margin: 0px;
+}
+.joomportfcat li {
+    list-style-image: url(select2.png);
+   font-weight: bold;
+    margin-left: 25px;
+}
+.joomportfcat li:hover {
+   cursor: pointer;
+   list-style-image: url(selected2.png);
+}
+
+/*
+items
+*/
+.joomportfitems {
+  text-decoration: none;
+}
+.joomportfitems li {
+    list-style-image: url(items.png);
+   font-weight: bold;
+}
+
+.joomportfcat li{
+    margin-top: 9px;
+    margin-bottom: 0px;
+}

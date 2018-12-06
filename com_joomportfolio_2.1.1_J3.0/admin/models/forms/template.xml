@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset
+            name="details"
+            label="COM_JOOMPORTFOLIO_FIELDSET_DETAILS"
+            >
+        <field	name="id" type="hidden" />
+        <field
+                name="name"
+                type="text"
+                label="COM_JOOMPORTFOLIO_FIELD_HEADING_NAME"
+                size="40"
+                required="true"
+                class="inputbox validate-subject"
+                description="COM_JOOMPORTFOLIO_FIELD_HEADING_NAME_DESC"
+                default=""
+                />
+
+
+
+
+    </fieldset>
+    <fieldset
+            name="cat"
+            label="COM_JOOMPORTFOLIO_FIELDSET_DETAILS"
+            >
+
+        <field name="cat_view"
+               type="textarea"
+               label="COM_JOOMPORTFOLIO_TEMPLATE_FOR_CAT"
+               class="inputbox"
+               filter="safehtml"
+               required="true"
+               rows="30"
+               cols="20"
+               description="" />
+
+    </fieldset>
+    <fieldset
+            name="item"
+            label="COM_JOOMPORTFOLIO_FIELDSET_DETAILS"
+            >
+
+        <field name="item_view"
+               type="textarea"
+               label="COM_JOOMPORTFOLIO_TEMPLATE_FOR_ITEM"
+               class="inputbox"
+               filter="safehtml"
+               required="true"
+               rows="30"
+               description="" />
+
+    </fieldset>
+
+</form>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension	type="module"	version="3.0"	client="site"	method="upgrade">
+	<name>memorials</name>
+    <author>JoomPlace Team</author>
+	<creationDate>March 2014</creationDate>
+	<copyright>(C) JoomPlace, www.joomplace.com</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>support@joomplace.com</authorEmail>
+	<authorUrl>www.joomplace.com</authorUrl> 
+    <version>2.0.1</version>
+	<description>MOD_MEMORIALS_XML_DESCRIPTION</description>
+	<files>
+	<filename module="mod_memorials">mod_memorials.php</filename>
+	<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_memorials.xml</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_memorials.ini</language>
+		<language tag="en-GB">language/en-GB/en-GB.mod_memorials.sys.ini</language>
+	</languages>
+	<help key="JHELP_EXTENSIONS_MODULE_MANAGER_MEMORIALS" />
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field	name="moduleclass_sfx"	type="text"	label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="autoItemid" type="radio" default="1" label="MOD_MEMORIALS_AUTOITEMID" description="MOD_MEMORIALS_AUTOITEMID_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="Itemid" type="text" default="" label="MOD_MEMORIALS_ITEMID" description="MOD_MEMORIALS_ITEMID_DESC" />
+				<field name="show" type="list" default="0" label="MOD_MEMORIALS_SHOW_LABEL" description="MOD_MEMORIALS_SHOW_DESC">
+					<option value="0">MOD_MEMORIALS_SHOW_CC</option>
+					<option value="1">MOD_MEMORIALS_SHOW_LI</option>
+				</field>
+				<field	name="count_cat" type="text"	label="MOD_MEMORIALS_COUNT_CAT"
+					description="MOD_MEMORIALS_COUNT_CAT_DESC" />
+				<field	name="count_items" type="text"	label="MOD_MEMORIALS_COUNT_ITEMS"
+					description="MOD_MEMORIALS_COUNT_ITEMS_DESC" />
+		</fieldset>
+		</fields>
+	</config>
+</extension>

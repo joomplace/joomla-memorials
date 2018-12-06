@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension	type="module"	version="3.0"	client="site"	method="upgrade">
+    <name>Random memorials</name>
+    <creationDate>March 2014</creationDate>
+    <author>JoomPlace Team</author>
+    <authorEmail>support@joomplace.com</authorEmail>
+    <authorUrl>www.joomplace.com</authorUrl>
+    <copyright>(C) JoomPlace, www.joomplace.com</copyright>
+    <license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
+    <version>2.0.1</version>
+    <description>Show random memorials.</description>
+    <files>
+        <filename module="mod_memorials_rand">mod_memorials_rand.php</filename>
+        <folder>tmpl</folder>
+        <folder>js</folder>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <filename>Timg.php</filename>
+        <filename>mod_memorials_rand.xml</filename>
+    </files>
+    <languages>
+        <language tag="en-GB">en-GB.mod_memorials_rand.ini</language>
+    </languages>
+    <config>
+        <fields name="params" addfieldpath="/modules/mod_memorials_rand/models/fields">
+            <fieldset name="basic">
+                <field name="ismodal" type="list" default="0" label="MOD_MEMORIALS_MODAL" description="MOD_MEMORIALS_MODAL_DESC">
+                    <option value="0">MOD_MEMORIALS_MODAL_NEW_PAGE</option>
+                    <option value="1">MOD_MEMORIALS_MODAL_LITEBOX_PAGE</option>
+                </field>
+                <field name="isstatic" type="list" default="0" label="MOD_MEMORIALS_STATIC" description="MOD_MEMORIALS_STATIC_DESC">
+                    <option value="0">MOD_MEMORIALS_STATIC_NO</option>
+                    <option value="1">MOD_MEMORIALS_STATIC_YES</option>
+                </field>
+                <field name="Itemid" type="text" default="" label="MOD_MEMORIALS_ITEMID">
+                </field>
+            </fieldset>
+            <fieldset name="styling" label="MOD_MEMORIALS_SETTINGS_STYLING_CAPTION">
+                <field name="height" type="text" default="200" label="MOD_MEMORIALS_SETTINGS_HEIGHT"
+                       description="MOD_MEMORIALS_SETTINGS_HEIGHT_DESC">
+                </field>
+
+                <field name="timeout" type="text" default="5" label="MOD_MEMORIALS_SETTINGS_TIMEOUT"
+                       description="MOD_MEMORIALS_SETTINGS_TIMEOUT_DESC">
+                </field>
+
+                <field name="th_width" type="text" default="110" label="MOD_MEMORIALS_SETTINGS_TH_WIDTH"
+                       description="MOD_MEMORIALS_SETTINGS_TH_WIDTH_DESC">
+                </field>
+
+                <field name="show_avatar_module" type="radio" default="1" label="MOD_MEMORIALS_SETTINGS_SHOWAVATARMODULE"
+                       class="btn-group">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="show_readmore" type="radio" default="1" label="MOD_MEMORIALS_SETTINGS_SHOWREADMORE"
+                       class="btn-group">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="slideshow_effect" type="list" default="slide" label="MOD_MEMORIALS_SETTINGS_SLIDESHOW_EFFECT"
+                       class="btn-group">
+                    <option value="blind">MOD_MEMORIALS_SETTINGS_SLIDESHOW_BLIND</option>
+                    <option value="clip">MOD_MEMORIALS_SETTINGS_SLIDESHOW_CLIP</option>
+                    <option value="drop">MOD_MEMORIALS_SETTINGS_SLIDESHOW_DROP</option>
+                    <option value="explode">MOD_MEMORIALS_SETTINGS_SLIDESHOW_EXPLODE</option>
+                    <option value="fade">MOD_MEMORIALS_SETTINGS_SLIDESHOW_FADE</option>
+                    <option value="fold">MOD_MEMORIALS_SETTINGS_SLIDESHOW_FOLD</option>
+                    <option value="puff">MOD_MEMORIALS_SETTINGS_SLIDESHOW_PUFF</option>
+                    <option value="pulsate">MOD_MEMORIALS_SETTINGS_SLIDESHOW_PULSATE</option>
+                    <option value="scale">MOD_MEMORIALS_SETTINGS_SLIDESHOW_SCALE</option>
+                    <option value="slide">MOD_MEMORIALS_SETTINGS_SLIDESHOW_SLIDE</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

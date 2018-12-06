@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+	addfieldpath="/administrator/components/com_joomportfolio/models/comments"
+>
+	<fieldset
+		name="details"
+		label="COM_JOOMPORTFOLIO_FIELDSET_DETAILS"
+	>
+		<field
+			name="id"
+			type="hidden"
+		/>
+
+		<field
+			name="title"
+			type="text"
+			label="JGLOBAL_TITLE"
+			description="JFIELD_TITLE_DESC"
+			size="40"
+			class="inputbox"
+			required="true"
+			default=""
+		/>
+		 <field
+            name="date"
+            type="calendar"
+            required="false"
+            label="COM_JOOMPORTFOLIO_FIELDSET_DATE"
+            description="" format="%Y-%m-%d"
+            maxlength="20"
+            filter="server_utc"
+            />
+		<field
+			name="item_id"
+            type="sql"
+query="SELECT id, title FROM #__jp3_items WHERE mode='memorials'"
+            key_field="id"
+            value_field="title"
+			label="COM_JOOMPORTFOLIO_SETTINGS_ITEM"
+			required="true"
+		/>
+		<field
+			name="published"
+			type="radio"
+			label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC"
+			class="btn-group"
+			size="1"
+			default="1"
+		>
+			<option	value="1">JPUBLISHED</option>
+			<option	value="0">JUNPUBLISHED</option>
+		</field>
+
+
+		<field
+			name="comment"
+			type="editor"
+			label="COM_JOOMPORTFOLIO_ITEM_DETAILS_DESCRIPTION"
+			class="inputbox"
+			filter="safehtml"
+			cols="40"
+			rows="8"
+		/>
+
+      
+	</fieldset>
+
+</form>
+

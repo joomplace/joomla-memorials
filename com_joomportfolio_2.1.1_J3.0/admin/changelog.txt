@@ -1,0 +1,87 @@
+------- 2.0.4 Release [06-March-2012] -------
+- Added caching for images
+- Added images multiuploader
+- Bugfixing
+
+------- 2.0.3 Release [03-June-2012] -------
+- Joomla 2.5 Compatible upgrade
+
+------- 2.0.2 Release [16-January-2012] -------
+29 August 2012
+
+- Updated upload images (for comp. IE8, IE7). 
+- Fixed bugs.
+
+------- 2.0.1 Stable Release [29-May-2011] -------
+29 August 2011
+
+- Adjusted to true MVC scheme
+- Added the Calendar type filed to the Custom Fields section
+- Added the Rating system
+- Added possibility to import component data from Joomla! 1.5
+- Added integration with services Disqus and AddThis
+- Added modular grid based html/css on the front-end
+
+18 May 2011
+- New powerfull categories system
+
+15 May 2011
+- Upgraded custom fields managment
+
+9 May 2011
+- New template
+
+7 May 2011
+- New images managment
+
+2 May 2011
+- New plugins
+
+------- 1.2.1 Stable Release [30-April-2011] -------
+
+30 April 2011
+- Upgrade for Joomla 1.6
+
+25 April 2011
+- Sef router
+
+20 April 2011
+- Update check-out system
+
+18 April 2011
+- Added new permissions system
+
+10 April 2011
+- Update plugins
+
+-------- JoomPortfolio version 1.0.3 -------
+16 Febr 2011
+- Added Search Plugin for JoomPortfolio
+
+29 Sept 2010
+- Added "Show branding" option in settings
+
+22 Sept 2010
+- Added default type menu item
+
+02 August 2010
+- Added new type of custom field for items (URL)
+ 
+28 July 2010
+- Added items order setting
+ 
+27 July 2010
+- Added new option "Ordering"
+ 
+---------------- JoomPortfolio Version 1.0.2 -----------------
+24 June 2010
+- Added ability to add more than just 4 images to item
+- It became possible to add the title and author to each of the images 
+ 
+23 Apr 2010
+- Added new field types for the elements description (text field, textarea, email field)
+- Content plugins support
+- Added metadata for  items (metadescription, metakeys, author)
+- Fixed the way titles were shown (section name, category and element are shown in the title)
+- SEO improvements (plugin for the ArtioJoom Sef component)
+- Fixed the errors of the image upload

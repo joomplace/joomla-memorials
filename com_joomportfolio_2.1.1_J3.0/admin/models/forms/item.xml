@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form
+	addfieldpath="/administrator/components/com_joomportfolio/models/fields"
+>
+	<fieldset
+		name="details"
+		label="COM_JOOMPORTFOLIO_FIELDSET_DETAILS"
+	>
+		<field
+			name="id"
+			type="hidden"
+		/>
+
+		<field
+			name="title"
+			type="text"
+			label="JGLOBAL_TITLE"
+			description="JFIELD_TITLE_DESC"
+			size="40"
+			class="inputbox"
+			required="true"
+			default=""
+		/>
+		<field
+			name="alias"
+			type="text"
+			label="JFIELD_ALIAS_LABEL"
+			description="JFIELD_ALIAS_DESC"
+			size="40"
+			class="inputbox"
+			required="false"
+			default=""
+		/>
+		<field
+			name="cat_id"
+            type="customsql"
+			label="JCATEGORY"
+			description="JFIELD_CATEGORY_DESC"
+			required="true"
+		/>
+		<field
+			name="published"
+			type="radio"
+			label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC"
+			class="btn-group"
+			size="1"
+			default="1"
+		>
+			<option	value="1">JPUBLISHED</option>
+			<option	value="0">JUNPUBLISHED</option>
+		</field>
+		<field
+			name="hits"
+			type="text"
+			label="JGLOBAL_HITS"
+			class="inputbox readonly"
+			size="6"
+			readonly="true"
+		/>  
+                <field
+      			name="date"
+      			type="calendar"
+                required="false"
+                label="COM_JOOMPORTFOLIO_FIELDSET_DATE"
+                description="" format="%Y-%m-%d %H:%M:%S"
+                maxlength="20"
+                filter="server_utc"
+      		/>
+
+        <field
+                name="description"
+                type="editor"
+                label="COM_JOOMPORTFOLIO_ITEM_DETAILS_DESCRIPTION"
+                class="inputbox"
+                filter="safehtml"
+                cols="40"
+                rows="8"
+                buttons="true"
+                />
+
+        <field
+                name="description_short"
+                type="editor"
+                label="COM_JOOMPORTFOLIO_ITEM_DETAILS_SHORT_DESCRIPTION"
+                class="inputbox"
+                filter="safehtml"
+                cols="40"
+                rows="8"
+                buttons="true"
+                />
+
+
+	      
+	</fieldset>
+	<fieldset
+		name="metadata"
+		label="COM_JOOMPORTFOLIO_FIELDSET_METADATA"
+	>
+            <field name="metaauth" type="text" class="inputbox"
+			size="20" label="COM_JOOMPORTFOLIO_ITEM_METADATA_AUTHOR"
+			description="" />
+		<field name="metadesc" cols="30" rows="5" type="textarea" filter="safehtml" class="inputbox"
+			size="20" label="COM_JOOMPORTFOLIO_ITEM_METADATA_DESCRIPTION"
+			description="" />
+		
+		<field name="metakey" cols="30" rows="5" type="textarea" class="inputbox"
+			size="20" label="COM_JOOMPORTFOLIO_ITEM_METADATA_KEYWORDS"
+			description="" />
+
+        <field
+                name="og_picture"
+                type="text"
+                label="COM_JOOMPORTFOLIO_OG_IMG"
+                class="inputbox"
+                />
+
+        <field name="og_description" cols="30" rows="5" type="textarea" class="inputbox"
+               label="COM_JOOMPORTFOLIO_OG_DESCRIPTION"
+               description="" />
+
+	</fieldset>
+
+    <fields name="pdf" >
+    <fieldset
+            name="pdf"
+            label="COM_JOOMPORTFOLIO_FIELDSET_PDF"
+            >
+        <field   name="pdf"
+                 type="pdftable"
+                 class="inputbox"
+                 label="COM_JOOMPORTFOLIO_ITEM_PDF"
+                 description=""
+                 folder="com_joomportfolio/items"
+                />
+    </fieldset>
+</fields>
+
+    <fields name="vidio" >
+        <fieldset
+                name="video"
+                label="COM_JOOMPORTFOLIO_FIELDSET_VIDEO"
+                >
+            <field   name="video"
+                     type="videotable"
+                     class="inputbox"
+                     label="COM_JOOMPORTFOLIO_ITEM_VIDEO"
+                     description=""
+                     folder="com_joomportfolio/items"
+                    />
+        </fieldset>
+    </fields>
+
+    <fields name="images" >
+        <fieldset
+		name="images"
+		label="COM_JOOMPORTFOLIO_FIELDSET_IMAGES"
+	>
+		<field
+			name="images"
+			type="imagetable"
+			class="inputbox"
+			label="COM_JOOMPORTFOLIO_ITEM_IMAGES"
+			description=""
+			folder="com_joomportfolio/items"
+		/>
+	</fieldset>
+    </fields>
+
+    <fields name="audiof" >
+        <fieldset
+                name="audio"
+                label="COM_JOOMPORTFOLIO_FIELDSET_AUDIO"
+                >
+            <field   name="audio"
+                     type="audiotable"
+                     class="inputbox"
+                     label="COM_JOOMPORTFOLIO_ITEM_AUDIO"
+                     description=""
+                     folder="com_joomportfolio/items"
+                    />
+        </fieldset>
+    </fields>
+
+</form>
+
