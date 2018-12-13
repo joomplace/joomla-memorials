@@ -67,18 +67,12 @@ class JoomPortfolioControllerItems extends JControllerAdmin
         $count_cid = count($cid);
         $model = $this->getModel('Items');
 
-        include_once(JPATH_COMPONENT . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'tcpdf/tcpdf.php');
-
+        include_once(JPATH_COMPONENT . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'tcpdf'. DIRECTORY_SEPARATOR . 'tcpdf.php');
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, 'A4', true, 'UTF-8', false);
-
         $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-
         $pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
-
         $pdf->SetPrintHeader(false);
         $pdf->SetPrintFooter(false);
-
-        // add a page
 
         for ($i = 0; $i < $count_cid; $i++) {
             $html = '';
@@ -87,73 +81,66 @@ class JoomPortfolioControllerItems extends JControllerAdmin
             $item = $model->getItem($cid[$i]);
             $fields = $model->getFields($cid[$i]);
 
-        if (!empty($item)) {
-            $html .= '<h3 style="text-align:center;">' . $item->title . '</h3>';
-            $html.='<table style="height:100%;">';
-            $html.='<tr>';
-            if (!empty($image)) {
-                $html.='<td>';
-                $img = JPATH_SITE . '/images/joomportfolio/' . $image->item_id . '/original/' . $image->full;
-                $html .= '<img src="' . $img . '" style="height: 150; width:auto;">';
-                $html.='</td>';
-            }
-          if (!empty($fields)) {
-                $html.='<td>';
-                $field = $fields;
-                for ($k = 0; $k < count($field); $k++) {
-                    $str = '';
-                    $str .= '<br><strong>' . $field[$k]["label"] . '</strong>: ';
-                    if (trim($field[$k]["value"]) != '') {
-                        $value = $field[$k]["value"];
-                    } else {
-                        $value = $field[$k]['def'];
-                    }
-                    if ($value) {
-                        switch ($field[$k]['type']) {
-                            case 'textemail':
-                                $params = $mainframe->getParams('com_joomportfolio');
-                                $dispatcher = JDispatcher::getInstance();
-                                JPluginHelper::importPlugin('content', 'emailcloak');
-                                $result = $dispatcher->trigger('onPrepareContent', array(& $value, & $params, 0));
-                                $str .= '<a href="mailto:' . $value . '">' . $value . '</a>';
-                                break;
-                            case 'url':
-                                $str .= '<a href="' . trim($value) . '" target="_blank" >' . $value . '</a>';
-                                break;
-                            case 'calendar':
-                                if ($value != "") {
-                                    if (!$field[$k]['format']) {
-                                        $field[$k]['format'] = 'd/m/Y';
-                                    }
-                                    $str .= JHTML::_('date', $value, $field[$k]['format'], NULL);
-                                }
-                                break;
-                            default:
-                                $str .= $value;
-                                break;
-                        }
-                    }
-                    $html .=  $str ;
+            if (!empty($item)) {
+                $html .= '<h3 style="text-align:center;">' . $item->title . '</h3>';
+                $html .= '<table style="height:100%;">';
+                $html .= '<tr>';
+
+                if (!empty($image)) {
+                    $html .= '<td>';
+                    $img = '/images/joomportfolio/' . $image->item_id . '/original/' . $image->full;
+                    $html .= '<img src="'.$img.'" style="height:150px; width:auto;">';
+                    $html .= '</td>';
                 }
 
-                $html.='</td>';
+                if (!empty($fields)) {
+                    $html .= '<td>';
+                    for ($k = 0; $k < count($fields); $k++) {
+                        $str = '';
+                        $str .= '<br><strong>' . $fields[$k]["label"] . '</strong>: ';
+                        if (trim($fields[$k]['value']) != '') {
+                            $value = trim($fields[$k]['value']);
+                        } else {
+                            $value = trim($fields[$k]['def']);
+                        }
+                        if ($value) {
+                            switch ($fields[$k]['type']) {
+                                case 'textemail':
+                                    $params = JComponentHelper::getParams('com_joomportfolio');
+                                    $dispatcher = JDispatcher::getInstance();
+                                    JPluginHelper::importPlugin('content', 'emailcloak');
+                                    $result = $dispatcher->trigger('onPrepareContent', array(& $value, & $params, 0));
+                                    $str .= '<a href="mailto:'.$value.'">'.$value.'</a>';
+                                    break;
+                                case 'url':
+                                    $str .= '<a href="'.trim($value).'" target="_blank" >'.$value.'</a>';
+                                    break;
+                                case 'calendar':
+                                    if (!$fields[$k]['format']) {
+                                        $fields[$k]['format'] = 'd/m/Y';
+                                    }
+                                    $str .= JHTML::_('date', $value, $fields[$k]['format'], NULL);
+                                    break;
+                                default:
+                                    $str .= $value;
+                                    break;
+                            }
+                        }
+                        $html .=  $str ;
+                    }
 
+                    $html.='</td>';
+                }
+
+                $html .= '</tr>';
+                $html .= '<tr><td colspan="2">' . $item->description. '</td>';
+                $html .= '</tr></table>';
             }
 
-            $html.='</tr>';
-            $html .= '<tr><td colspan="2">' . $item->description. '</td>';
-            $html.='</tr></table>';
-
-        }
             $pdf->writeHTML($html, true, 0, true, true);
         }
 
-
-        $pdf->Output(JPATH_COMPONENT . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'result.pdf', 'I');
-        echo $pdf;
-
-
+        $pdf->Output('result.pdf', 'D');
+        exit;
     }
-
-
 }
