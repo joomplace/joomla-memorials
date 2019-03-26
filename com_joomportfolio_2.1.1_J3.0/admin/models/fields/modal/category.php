@@ -101,7 +101,7 @@ class JFormFieldModal_Category extends JFormField
 		$db->setQuery(
 			'SELECT title' .
 			' FROM #__categories' .
-			' WHERE extension="com_'.$mode.' AND ("id = '.(int) $this->value.')'
+			' WHERE extension="com_'.$mode.'" AND ("id" = '.(int) $this->value.')'
 		);
 
 		try

@@ -12,7 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'base' . DIRECTORY_SEPARATOR . 'list.php');
 require_once(JPATH_BASE . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'com_joomportfolio' . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'joomportfolio.php');
 
-class JoomPortfolioModelCategory extends BaseList
+class JoomPortfolioModelCategory extends JModelList
 {
     
     public function populateState()

@@ -11,7 +11,7 @@ defined('_JEXEC') or die('Restricted access');
 
 include_once(JPATH_COMPONENT . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'baseview.php');
 jimport('joomla.html.pagination');
-class JoomPortfolioViewCategory extends BaseView
+class JoomPortfolioViewCategory extends JViewLegacy
 {
 
     function display($tpl = null)
