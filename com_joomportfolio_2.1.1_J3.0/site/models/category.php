@@ -106,6 +106,7 @@ class JoomPortfolioModelCategory extends JModelList
             $this->setState('limitstart', $jinput->get('limitstart', 0, 'INT'));
         }
 
+        $query->order($db->quoteName('i.title').' ASC');
         //die($query->__toString());
 
         return $query;
