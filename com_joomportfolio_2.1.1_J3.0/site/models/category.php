@@ -15,7 +15,7 @@ require_once(JPATH_BASE . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARAT
 class JoomPortfolioModelCategory extends JModelList
 {
     
-    public function populateState()
+    public function populateState($ordering = NULL, $direction = NULL)
     {
         $jinput = JFactory::getApplication()->input;
         $app = JFactory::getApplication('site');
@@ -41,7 +41,7 @@ class JoomPortfolioModelCategory extends JModelList
         $value = $jinput->get('limitstart', 0, 'uint');
         $this->setState('limitstart', $value);
 
-        parent::populateState();
+        parent::populateState($ordering, $direction);
     }
 
     public function getListQuery()
@@ -190,7 +190,8 @@ class JoomPortfolioModelCategory extends JModelList
             $query->setLimit($limit, $limitstart);
         }
 
-        $query->order('i.id DESC');
+//        $query->order('i.id DESC');
+        $query->order($db->quoteName('i.title').' ASC');
 
         $db->setQuery($query);
         $cat_items = $db->loadObjectList();
