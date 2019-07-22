@@ -375,3 +375,43 @@ div.jp-main-cat {
 .main-img img{
     width: 100%;
 }
+
+/* Mobile adaptivity */
+.carousel-navigation  {
+    width: 215px!important;
+}
+.jp-navigation {
+    margin-left: 0!important;
+}
+.ceraBox {
+    width: 100%!important;
+}
+.carousel {
+    width: 180px!important;
+}
+@media (max-width: 576px) {
+    .cat-wrap {
+        width: 100%;
+    }
+    .alpha_search {
+        width: 100%;
+    }
+    .alpha_search a {
+        width: 7.6%;
+        display: block;
+        float: left;
+    }
+}
+@media (max-width: 768px) {
+    .cat-wrap {
+        width: 100%;
+    }
+    .alpha_search {
+        width: 100%;
+    }
+    .alpha_search a {
+        width: 7.6%;
+        display: block;
+        float: left;
+    }
+}
