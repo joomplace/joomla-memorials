@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<extension type="package" version="3.x" method="upgrade">
+  <name>Memorials Package</name>
+  <author>Joomplace Team</author>
+  <creationDate>July 2019</creationDate>
+  <packagename>memorials</packagename>
+  <authorEmail>support@joomplace.com</authorEmail>
+  <authorUrl>www.joomplace.com</authorUrl>
+  <copyright>(C) JoomPlace, www.joomplace.com</copyright>
+  <license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
+  <version>2.1.1</version>
+  <files folder="packages">
+    <file type="component" id="com_joomportfolio">joomportfolio.zip</file>
+    <file type="module" id="memorials" client="site">mod_memorials.zip</file>
+    <file type="module" id="memorials" client="site">mod_memorials_rand.zip</file>
+    <file type="plugin" id="memorials" group="portfolio">plg_memorials.zip</file>
+  </files>
+  <updateservers>
+    <server type="collection" priority="1" name="Joomplace Update Site">http://www.joomplace.com/updates/collections.xml</server>
+  </updateservers>
+</extension>
