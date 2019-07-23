@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.0" type="plugin" group="portfolio">
+<extension version="3.0" type="plugin" group="portfolio" method="upgrade">
     <name>Portfolio Memorials</name>
     <creationDate>March 2014</creationDate>
     <author>JoomPlace Team</author>
