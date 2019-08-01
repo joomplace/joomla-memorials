@@ -53,13 +53,11 @@ class JFormFieldModal_Category extends JFormField
 		$script[] = '		document.getElementById("'.$this->id.'_id").value = id;';
 		$script[] = '		document.getElementById("'.$this->id.'_name").value = title;';
 
-		if ($allowEdit)
-		{
+		if ($allowEdit) {
 			$script[] = '		jQuery("#'.$this->id.'_edit").removeClass("hidden");';
 		}
 
-		if ($allowClear)
-		{
+		if ($allowClear) {
 			$script[] = '		jQuery("#'.$this->id.'_clear").removeClass("hidden");';
 		}
 
@@ -69,8 +67,7 @@ class JFormFieldModal_Category extends JFormField
 		// Clear button script
 		static $scriptClear;
 
-		if ($allowClear && !$scriptClear)
-		{
+		if ($allowClear && !$scriptClear) {
 			$scriptClear = true;
 
 			$script[] = '	function jClearCategory(id) {';
@@ -91,42 +88,38 @@ class JFormFieldModal_Category extends JFormField
 		$html	= array();
 		$link	= 'index.php?option=com_categories&amp;view=categories&amp;layout=modal&amp;tmpl=component&amp;extension='.$extension.'&amp;function=jSelectCategory_'.$this->id;
 
-		if (isset($this->element['language']))
-		{
+		if (isset($this->element['language'])) {
 			$link .= '&amp;forcedLanguage='.$this->element['language'];
 		}
 
-		$db	= JFactory::getDbo();
-                 $mode = JoomPortfolioHelper::getMode();/*JFactory::getApplication()->input->cookie->get('name');*/
-		$db->setQuery(
-			'SELECT title' .
-			' FROM #__categories' .
-			' WHERE extension="com_'.$mode.' AND ("id = '.(int) $this->value.')'
-		);
+        $mode = JoomPortfolioHelper::getMode(); /*JFactory::getApplication()->input->cookie->get('name');*/
 
-		try
-		{
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true);
+		$query->select($db->qn('title'))
+            ->from($db->qn('#__categories'))
+            ->where($db->qn('extension') .'='. $db->q('com_'.$mode))
+            ->where($db->qn('id') .'='. $db->q((int)$this->value));
+		$db->setQuery($query);
+
+		try {
 			$title = $db->loadResult();
 		}
-		catch (RuntimeException $e)
-		{
+		catch (RuntimeException $e) {
 			JError::raiseWarning(500, $e->getMessage());
 		}
 
-		if (empty($title))
-		{
+		if (empty($title)) {
 			$title = JText::_('COM_CATEGORIES_SELECT_A_CATEGORY');
 		}
 		$title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
 
 		// The active category id field.
-		if (0 == (int) $this->value)
-		{
+		if ((int)$this->value == 0) {
 			$value = '';
 		}
-		else
-		{
-			$value = (int) $this->value;
+		else {
+			$value = (int)$this->value;
 		}
 
 		// The current category display field.
@@ -135,14 +128,12 @@ class JFormFieldModal_Category extends JFormField
 		$html[] = '<a class="modal btn hasTooltip" title="'.JHtml::tooltipText('COM_CATEGORIES_CHANGE_CATEGORY').'"  href="'.$link.'&amp;'.JSession::getFormToken().'=1" rel="{handler: \'iframe\', size: {x: 800, y: 450}}"><i class="icon-file"></i> '.JText::_('JSELECT').'</a>';
 
 		// Edit category button
-		if ($allowEdit)
-		{
+		if ($allowEdit) {
 			$html[] = '<a class="btn hasTooltip'.($value ? '' : ' hidden').'" href="index.php?option=com_categories&layout=modal&tmpl=component&task=category.edit&id=' . $value. '" target="_blank" title="'.JHtml::tooltipText('COM_CATEGORIES_EDIT_CATEGORY').'" ><span class="icon-edit"></span> ' . JText::_('JACTION_EDIT') . '</a>';
 		}
 
 		// Clear category button
-		if ($allowClear)
-		{
+		if ($allowClear) {
 			$html[] = '<button id="'.$this->id.'_clear" class="btn'.($value ? '' : ' hidden').'" onclick="return jClearCategory(\''.$this->id.'\')"><span class="icon-remove"></span> ' . JText::_('JCLEAR') . '</button>';
 		}
 
@@ -150,8 +141,7 @@ class JFormFieldModal_Category extends JFormField
 
 		// class='required' for client side validation
 		$class = '';
-		if ($this->required)
-		{
+		if ($this->required) {
 			$class = ' class="required modal-value"';
 		}
 
