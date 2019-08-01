@@ -9,17 +9,14 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-include_once(JPATH_COMPONENT . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'baseview.php');
 jimport('joomla.html.pagination');
-class JoomPortfolioViewCategory extends BaseView
+class JoomPortfolioViewCategory extends JViewLegacy
 {
-
     function display($tpl = null)
     {
-
         $model = $this->getModel();
         $app = JFactory::getApplication('site');
-        $jinput = JFactory::getApplication()->input;
+        $jinput = $app->input;
 
         $cat_id = $jinput->get('id', '', 'HTML');
         $cid = $jinput->get('cid', '', 'HTML');
@@ -128,6 +125,5 @@ class JoomPortfolioViewCategory extends BaseView
 
         return $html;
     }
-
 
 }

@@ -9,13 +9,12 @@
  */
 defined('_JEXEC') or die('Restricted access');
 
-require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'base' . DIRECTORY_SEPARATOR . 'list.php');
 require_once(JPATH_BASE . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'com_joomportfolio' . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR . 'joomportfolio.php');
 
-class JoomPortfolioModelCategory extends BaseList
+class JoomPortfolioModelCategory extends JModelList
 {
     
-    public function populateState()
+    public function populateState($ordering = NULL, $direction = NULL)
     {
         $jinput = JFactory::getApplication()->input;
         $app = JFactory::getApplication('site');
@@ -24,9 +23,6 @@ class JoomPortfolioModelCategory extends BaseList
         $this->setState('params', $params);
 
         $id = $jinput->get('id', 0, 'INT');
-        if(!$id){
-            $id = $jinput->get('id', 0, 'INT');
-        }
         $this->setState('id', $id);
 
         $letter = $jinput->get('letter', '');
@@ -97,6 +93,8 @@ class JoomPortfolioModelCategory extends BaseList
              }
             $query->where('i.date > DATE_SUB(NOW(), INTERVAL '.$days.' day) ');
         }
+
+        $query->order('i.title');
 
         if (!$this->getState('limit')) {
             $this->setState('limit', $jinput->get('limit', 0, 'INT'));
@@ -190,7 +188,7 @@ class JoomPortfolioModelCategory extends BaseList
             $query->setLimit($limit, $limitstart);
         }
 
-        $query->order('i.id DESC');
+        $query->order('i.title');
 
         $db->setQuery($query);
         $cat_items = $db->loadObjectList();
