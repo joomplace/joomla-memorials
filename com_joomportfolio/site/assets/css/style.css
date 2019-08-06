@@ -1,22 +1,24 @@
-
-
 div.jp-categories div.clear {
     height: 20px;
 }
-
-
+.jp-main-cat h1.title {
+    font-weight: normal;
+    margin-top: 10px;
+    font-family: Arial, Helvetica;
+    color: #1d85dc;
+    text-shadow: none;
+    text-align: center;
+    font-size: 28px;
+}
 #portfolio div.list-footer div.limit {
     position: relative;
     float: left;
     width: 140px;
 }
-
 #portfolio div.list-footer div.counter {
     float: right;
     width: 130px;
 }
-
-
 #portfolio div.list-footer ul {
     float: left;
     list-style-type: none;
@@ -25,32 +27,26 @@ div.jp-categories div.clear {
     padding: 0px;
     text-align: center;
 }
-
 #portfolio div.list-footer ul li {
     float: left;
     width: auto;
     margin-right: 4px;
 }
-
 p.brand {
     text-align: center;
     margin: 10px 0px;
 }
-
 p.copyright {
     display: none;
 }
-
 div.description {
     text-align: justify;
     margin-bottom: 15px;
 }
-
 a.image {
     background: none!important;
     text-align: center;
 }
-
 #portfolio p.jp-subline {
     color: #808080;
     font-size: 12px;
@@ -58,20 +54,16 @@ a.image {
     text-shadow: none;
     margin: 4px 0px 4px 0px;
 }
-
 #portfolio div.info h2 {
     display: inline;
 }
-
 #portfolio div.info p.text {
     color: #202020;
 }
-
 #portfolio .item {
     border-bottom:1px dashed #ACACAC; 
     width:100%;
 }
-
 #portfolio div.details {
     margin: 10px 0px;
     padding: 5px;
@@ -84,14 +76,12 @@ a.image {
     border-radius: 4px;
     border: 1px solid white;
 }
-
 #portfolio div#gallery-main {
     float: left;
     min-width: 320px!important;
     position: relative;
     margin-bottom: 10px;
 }
-
 div.loading {
     background:#FFF url(../images/loading.gif) 50% 50% no-repeat;
     opacity: 0.7;
@@ -102,15 +92,11 @@ div.loading {
     top: 0px;
     bottom: 0px;
 }
-
-
-
 #portfolio div.gallery-menu ul {
     list-style: none;
     padding: 0px;
     margin: 0px;
 }
-
 #portfolio div.gallery-menu ul li {
     float: left;
     background: #FFF;
@@ -118,29 +104,23 @@ div.loading {
     border: 1px solid #DDD;
     margin: 5px 10px 5px 0px;
 }
-
 #portfolio div.beforeContent, #portfolio div.afterContent {
     margin: 10px 0px;
 }
-
 #portfolio div.beforeContent table, #portfolio div.afterContent table {
     border: none;
     outline: none;
 }
-
 #portfolio div.beforeContent table td, #portfolio div.beforeContent table tr, #portfolio div.afterContent table td, #portfolio div.afterContent table tr {
     border: none;
     outline: none;
 }
-
 .clr {
     clear: both;
 }
-
 div.item {
     margin: 10px 0px;
 }
-
 .main-cat .image img{
     width: 100px;
     height: 100px;
@@ -148,38 +128,29 @@ div.item {
     margin-right:10px;
     margin-bottom: 3px;
 }
-
-
 .subcategories_wrap {
     font-size: 18px;
     text-align: center;
     padding: 5px 0 10px 0;
     margin-top: 10px;
 }
-
 .grid_2{
     display: inline;
     float: left;
     position: relative;
     margin-left: 1%;
     margin-right: 1%;
-    /* width: 22%;*/
-    text-align: center;
 }
-
-
 .cat-wrap:hover
 { 
     border-style: dotted;
     border-color: blue;
 }
-
 .cat-wrap {
     border: 1px solid transparent;
     border-width: 1px;
     width: 22%;
 }
-
 .item-containter {
     float: left;
     width: 100%;
@@ -187,12 +158,9 @@ div.item {
     padding: 10px 0;
     margin-bottom: 10px;
 }
-
-
 .grid_6{
     width: 370px;
 }
-
 .menuItem a img {
     border: 1px dotted #CCC;
     padding: 0px;
@@ -200,7 +168,6 @@ div.item {
     margin: 5px 1px;
     max-width: 100px;
 }
-
 #ex_show {
     display: block;
     float: right;
@@ -208,11 +175,9 @@ div.item {
 .alpha_search{
     border-bottom: 1px dashed #ACACAC;
 }
-
 .alpha_search a{
     padding-left: 5px;
 }
-
 .jp-subcategory_title p.jp-subline {
     color: #808080;
     font-size: 12px;
@@ -220,7 +185,6 @@ div.item {
     text-shadow: none;
     margin: 4px 0px 4px 0px;
 }
-
 #items-listp .jp-photo-container {
     width: 25%;
     height: auto;
@@ -228,23 +192,19 @@ div.item {
     margin: 0;
     overflow: hidden;
 }
-
 .jp-photo-container {
     float: left;
     height: 100%;
     margin: 0 15px 10px 0;
 }
-
 .item-s-description {
     padding: 5px 0;
 }
-
 #items-list a.read-more:hover {
     background: url(../images/button_red_more1.png) bottom center;
     text-decoration: none;
     background-color: none;
 }
-
 #items-list a.read-more {
     float: right;
     background: url(../images/button_red_more1.png) top center;
@@ -261,38 +221,30 @@ div.item {
     border-radius: 4px;
     color: #fff!important;
 }
-
 #portfolio-item-containter, #obituary {
     color: #516C7B;
     position: relative;
 }
-
 .portfolio-item-containter {
     padding: 10px 15px;
     text-align: justify;
 }
-
 .item-photo{
     width: 100%;
     height: 100%;
 }
-
-
 .alert{
     display:none !important;
 }
-
 .mode-err{
     text-align: center;
     background-color: #F2DEDE;
     color:#b94a48;
 }
-
 #student-paginator span{
     display: inline-block;
     margin: 3px !important;
 }
-
 .portfolio-error{
     background-color: #f2dede;
     border: 1px solid #C93E53;
@@ -301,11 +253,9 @@ div.item {
     text-align: center;
     line-height: 30px;
 }
-
 div#system-message-container{
     display:none!important;
 }
-
 #loadImg{
     position:fixed;
     z-index:1000; 
@@ -315,28 +265,23 @@ div#system-message-container{
     left: 0;
     width: 100%;
 }
-
 .item-photo a.image{
     z-index: 3;
 }
 .gallery{
     min-width: 362px;
 }
-
 a.main-img{
-display: inline-block;
-float: left;
+    display: inline-block;
+    float: left;
 }
-
 a.main-img img{
     margin-right: 5px;
 }
-
 .main-error{
     background-color: rgb(248, 171, 171);
     text-align: center;
 }
-
 #myTab li a {
     color: #08c;
     text-decoration: none;
