@@ -93,7 +93,7 @@ class JoomPortfolioViewCategory extends JViewLegacy
         $document = JFactory::getDocument();
         $document->addStyleSheet(JURI::root() . 'components/com_joomportfolio/assets/css/vote.css');
         $document->addScript(JURI::root() . 'components/com_joomportfolio/assets/js/vote.js');
-        $document->addScript(JURI::root() . 'components/com_joomportfolio/assets/js/jquery-1.5.1.min.js');
+        //$document->addScript(JURI::root() . 'components/com_joomportfolio/assets/js/jquery-1.5.1.min.js');
 
         $document->addScriptDeclaration("var sfolder = '" . JURI::base(true) . "';
 					var jportfrate_text=Array('" . JText::_('COM_JOOMPORTFOLIO_RATING_NO_AJAX') . "','" . JText::_('COM_JOOMPORTFOLIO_RATING_LOADING') . "','" . JText::_('COM_JOOMPORTFOLIO_RATING_THANKS') . "','" . JText::_('COM_JOOMPORTFOLIO_RATING_LOGIN') . "','" . JText::_('COM_JOOMPORTFOLIO_RATING_RATED') . "','" . JTEXT::_('COM_JOOMPORTFOLIO_RATING_VOTES') . "','" . JTEXT::_('COM_JOOMPORTFOLIO_RATING_VOTE') . "');");
