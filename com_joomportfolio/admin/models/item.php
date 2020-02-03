@@ -303,7 +303,7 @@ public function showSelectImages() {
         $imgCopys = $images['jform']['images']['img_copyright'];
         $imgDescs = $images['jform']['images']['img_description'];
         $imgOrdering = $images['jform']['images']['img_ordering'];
-        if (!sizeof($imgPaths)) {
+        if (empty($imgPaths)) {
             return true;
         }
 

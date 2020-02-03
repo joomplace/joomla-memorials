@@ -160,7 +160,7 @@ class JoomPortfolioControllerUploader extends JControllerForm
         
         $db->setQuery('SELECT `item_id`,`full` FROM `#__jp3_pictures` WHERE `full`="'.$newName.'"');
         $result = $db->loadObjectList();
-        if (sizeof($result)) {
+        if (!empty($result)) {
         	foreach ($result as $file) {
         		unlink(JPATH_SITE.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'joomportfolio'.DIRECTORY_SEPARATOR.$file->item_id.DIRECTORY_SEPARATOR.'original'.DIRECTORY_SEPARATOR.$file->full);
         		unlink(JPATH_SITE.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'joomportfolio'.DIRECTORY_SEPARATOR.$file->item_id.DIRECTORY_SEPARATOR.$preview_width.'x'.$preview_height.DIRECTORY_SEPARATOR.'th_'.$file->full);
@@ -317,7 +317,7 @@ class JoomPortfolioControllerUploader extends JControllerForm
         $db = JFactory::getDbo();
         $db->setQuery('SELECT `item_id`,`full` FROM `#__jp3_pdf` WHERE `full`="'.$newName.'"');
         $result = $db->loadObjectList();
-        if (sizeof($result)) {
+        if (!empty($result)) {
             foreach ($result as $file) {
                 unlink(JPATH_SITE.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'joomportfolio'.DIRECTORY_SEPARATOR.$file->item_id.DIRECTORY_SEPARATOR.'media'.DIRECTORY_SEPARATOR.$file->full);
             }
@@ -345,7 +345,7 @@ class JoomPortfolioControllerUploader extends JControllerForm
         $db = JFactory::getDbo();
         $db->setQuery('SELECT `item_id`,`full` FROM `#__jp3_audio` WHERE `full`="'.$newName.'"');
         $result = $db->loadObjectList();
-        if (sizeof($result)) {
+        if (!empty($result)) {
             foreach ($result as $file) {
                 unlink(JPATH_SITE.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'joomportfolio'.DIRECTORY_SEPARATOR.$file->item_id.DIRECTORY_SEPARATOR.'audio'.DIRECTORY_SEPARATOR.$file->full);
             }
@@ -565,7 +565,7 @@ class JoomPortfolioControllerUploader extends JControllerForm
             $db = JFactory::getDbo();
             $db->setQuery('SELECT `item_id`,`full` FROM `#__jp3_video` WHERE `full`="'.$newName.'"');
             $result = $db->loadObjectList();
-            if (sizeof($result)) {
+            if (!empty($result)) {
                 foreach ($result as $file) {
                     unlink(JPATH_SITE.DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'joomportfolio'.DIRECTORY_SEPARATOR.$file->item_id.DIRECTORY_SEPARATOR.'video'.DIRECTORY_SEPARATOR.$file->full);
                 }
