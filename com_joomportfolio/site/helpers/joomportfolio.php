@@ -700,7 +700,7 @@ class JoomPortfolioHelper
         $replaseTo[] = (int)$params->item_hits_enabled ? $row->item_hits : '';
 
         $replaseFrom[] = '[rating]';
-        if (count($rating)) {
+        if (!empty($rating)) {
             $row->rating = '<strong>' . JText::_('COM_JOOMPORTFOLIO_RATING') . ':</strong>' . $rating;
         } else {
             $row->rating = '';
@@ -776,7 +776,7 @@ class JoomPortfolioHelper
 
 
         $img_def = '';
-        if (!sizeof($def_images)) {
+        if (empty($def_images)) {
             if (!empty($row->def_image)) {
 
                 $img_def = $row->def_image;
@@ -1020,7 +1020,7 @@ class JoomPortfolioHelper
     public static function renderAudio($audio, $id)
     {
 
-        $count_audio = count($audio);
+        $count_audio = !empty($audio) ? count($audio) : 0;
         $str = '';
         if ($count_audio) {
             $str .= '<ul >';
@@ -1044,7 +1044,7 @@ class JoomPortfolioHelper
 
     public static function renderVideo($video, $id)
     {
-        $count_video = count($video);
+        $count_video = !empty($video) ? count($video) : 0;
         $str = '';
         if ($count_video) {
             $str .= '<div class="item-video"><ul>';
@@ -1068,7 +1068,7 @@ class JoomPortfolioHelper
 
     public static function rendComments($comments, $item_id)
     {
-        $count_comments = count($comments);
+        $count_comments = !empty($comments) ? count($comments) : 0;
         $str = '';
         $str .= '<div id="commentListFormDiv">';
         if (JFactory::getUser()->id) {
@@ -1128,7 +1128,7 @@ class JoomPortfolioHelper
         $query->where('o.item_id=' . (int)$id . ' AND o.published=1');
         $db->setQuery($query);
         $ornaments = $db->loadObjectList();
-        $count = count($ornaments);
+        $count = !empty($ornaments) ? count($ornaments) : 0;
 
         if (JFactory::getUser()->id) {
             $str .= '<input type="button" class="condolence-form-toggle btn addButons" href="javascript:void(0)" id="addOrnament" onclick="showOrnamentForm();" value="' . JText::_("COM_JOOMPORTFOLIO_ADD_ORNAMENT") . '" /><div class="clr"></div>';
@@ -1162,7 +1162,7 @@ class JoomPortfolioHelper
     public static function getRatingStars($id, $rating_sum, $rating_count)
     {
         $rating_sum = $rating_sum ? $rating_sum : 0;
-        $rating_count = $rating_count ? $rating_count : 0;
+        $rating_count = !empty($rating_count) ? $rating_count : 0;
 
         $document = JFactory::getDocument();
         $document->addStyleSheet(JURI::root() . 'components/com_joomportfolio/assets/css/vote.css');

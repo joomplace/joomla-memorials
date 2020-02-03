@@ -158,7 +158,7 @@ $pathway->addItem($this->category->title,'');
                             $db->setQuery($query,0,1);
                             $result = $db->loadObject();
 
-                            if (sizeof($result)) {
+                            if (!empty($result)) {
                                 $def_images[] = $result;
                             }
                         }

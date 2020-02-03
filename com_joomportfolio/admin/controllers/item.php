@@ -321,7 +321,7 @@ public function showSelectImages() {
         $imgCopys = $images['jform']['images']['img_copyright'];
         $imgDescs = $images['jform']['images']['img_description'];
 
-        if (!sizeof($imgPaths)) {
+        if (empty($imgPaths)) {
             return true;
         }
 

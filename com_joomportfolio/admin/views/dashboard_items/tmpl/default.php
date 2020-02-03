@@ -83,7 +83,7 @@ $search = $this->escape($this->state->get('filter.search'));
                 </tr>
                 </tfoot>
                 <tbody>
-                <?php if (sizeof($this->items)) {
+                <?php if (!empty($this->items)) {
                     foreach ($this->items as $i => $item) {
                         $canEdit = $user->authorise('core.edit', $extension . '.questions.' . $item->id);
                         $canCheckin = $user->authorise('core.admin', 'com_checkin');
