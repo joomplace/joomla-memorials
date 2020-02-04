@@ -1241,12 +1241,10 @@ class JoomPortfolioHelper
         }
 
         for ($i = 0; $i < count($custom); $i++) {
-            if (count($custom[$i]['custom'])) {
-                if (is_array($custom[$i]['custom'])) {
-                    foreach ($custom[$i]['custom'] as $key => $value) {
-                        if (!in_array($key, $field_ids)) {
-                            unset($custom[$i]['custom'][$key]);
-                        }
+            if (!empty($custom[$i]['custom']) && is_array($custom[$i]['custom'])) {
+                foreach ($custom[$i]['custom'] as $key => $value) {
+                    if (!in_array($key, $field_ids)) {
+                        unset($custom[$i]['custom'][$key]);
                     }
                 }
             }
@@ -1254,10 +1252,9 @@ class JoomPortfolioHelper
 
         $custom_f = array();
         if (!empty($custom)) {
-
             for ($i = 0; $i < count($custom); $i++) {
                 for ($j = 0; $j < count($fields); $j++) {
-                    if (count($custom[$i]['custom'])) {
+                    if (!empty($custom[$i]['custom'])) {
                         $value = $custom[$i]['custom'];
                         if ((int)$fields[$j]['id'] == (int)$custom[$i]['field_id']) {
                             $custom_f[$j]['value'] = $value;
