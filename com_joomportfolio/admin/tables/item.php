@@ -56,7 +56,7 @@ class JoomPortfolioTableItem extends JTable
 			$query->from('#__jp3_href AS c');
 			$query->where('c.item_id='.$this->id);
 			$db->setQuery($query);
-			$this->catid = $db->loadResultArray();
+			$this->catid = $db->loadColumn();
 
 			$query = $db->getQuery(true);
 			$query->select('r.sum, r.count');
