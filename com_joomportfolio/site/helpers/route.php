@@ -6,8 +6,8 @@
  * @Copyright Copyright (C) JoomPlace, www.joomplace.com
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
-// no direct access
 
+// no direct access
 defined('_JEXEC') or die;
 
 abstract class JoomportfolioHelperRoute
@@ -16,40 +16,35 @@ abstract class JoomportfolioHelperRoute
 
 	protected static $lang_lookup = array();
 
-	/**
-	 * @param   integer  The route of the content item
-	 */
-	public static function getArticleRoute($id, $catid = 0, $language = 0)
+    protected static $menu_items = array();
+
+	public static function getMemorialRoute($id, $catid = 0, $language = 0)
 	{
 		$needles = array(
-			'article'  => array((int) $id)
+			'article'  => array($id)
 		);
-		//Create the link
+
 		$link = 'index.php?option=com_joomportfolio&view=item&id='. $id;
-		if ((int) $catid > 1)
-		{
-			$categories = JCategories::getInstance('Content');
+
+		if ((int) $catid > 1) {
+			$categories = JCategories::getInstance('Joomportfolio');
 			$category = $categories->get((int) $catid);
-			if ($category)
-			{
+			if ($category) {
 				$needles['category'] = array_reverse($category->getPath());
 				$needles['categories'] = $needles['category'];
-				$link .= '&catid='.$catid;
+				$link .= '&cid='.$category->alias;
 			}
 		}
-		if ($language && $language != "*" && JLanguageMultilang::isEnabled())
-		{
-			self::buildLanguageLookup();
 
-			if (isset(self::$lang_lookup[$language]))
-			{
+		if ($language && $language != "*" && JLanguageMultilang::isEnabled()) {
+			self::buildLanguageLookup();
+			if (isset(self::$lang_lookup[$language])) {
 				$link .= '&lang=' . self::$lang_lookup[$language];
 				$needles['language'] = $language;
 			}
 		}
 
-		if ($item = self::_findItem($needles))
-		{
+		if ($item = self::_findItem($needles)) {
 			$link .= '&Itemid='.$item;
 		}
 
@@ -58,44 +53,34 @@ abstract class JoomportfolioHelperRoute
 
 	public static function getCategoryRoute($catid, $language = 0)
 	{
-		if ($catid instanceof JCategoryNode)
-		{
+		if ($catid instanceof JCategoryNode) {
 			$id = $catid->id;
 			$category = $catid;
-		}
-		else
-		{
-			$id = (int) $catid;
-			$category = JCategories::getInstance('Content')->get($id);
+		} else {
+            $categories = JCategories::getInstance('Joomportfolio');
+            $category = $categories->get((int)$catid);
+            $id = (int)$category->id;
 		}
 
-		if ($id < 1 || !($category instanceof JCategoryNode))
-		{
+		if ($id < 1 || !($category instanceof JCategoryNode)) {
 			$link = '';
-		}
-		else
-		{
+		} else {
 			$needles = array();
-
-			$link = 'index.php?option=com_joomportfolio&view=category&id='.$id;
+			$link = 'index.php?option=com_joomportfolio&view=category&id='.$category->alias;
 
 			$catids = array_reverse($category->getPath());
 			$needles['category'] = $catids;
 			$needles['categories'] = $catids;
 
-			if ($language && $language != "*" && JLanguageMultilang::isEnabled())
-			{
+			if ($language && $language != "*" && JLanguageMultilang::isEnabled()) {
 				self::buildLanguageLookup();
-
-				if(isset(self::$lang_lookup[$language]))
-				{
+				if(isset(self::$lang_lookup[$language])) {
 					$link .= '&lang=' . self::$lang_lookup[$language];
 					$needles['language'] = $language;
 				}
 			}
 
-			if ($item = self::_findItem($needles))
-			{
+			if ($item = self::_findItem($needles)) {
 				$link .= '&Itemid='.$item;
 			}
 		}
@@ -103,25 +88,9 @@ abstract class JoomportfolioHelperRoute
 		return $link;
 	}
 
-	public static function getFormRoute($id)
-	{
-		//Create the link
-		if ($id)
-		{
-			$link = 'index.php?option=com_joomportfolio&task=item.edit&a_id='. $id;
-		}
-		else
-		{
-			$link = 'index.php?option=com_joomportfolio&task=item.edit&a_id=0';
-		}
-
-		return $link;
-	}
-
 	protected static function buildLanguageLookup()
 	{
-		if (count(self::$lang_lookup) == 0)
-		{
+		if (count(self::$lang_lookup) == 0) {
 			$db    = JFactory::getDbo();
 			$query = $db->getQuery(true)
 				->select('a.sef AS sef')
@@ -131,8 +100,7 @@ abstract class JoomportfolioHelperRoute
 			$db->setQuery($query);
 			$langs = $db->loadObjectList();
 
-			foreach ($langs as $lang)
-			{
+			foreach ($langs as $lang) {
 				self::$lang_lookup[$lang->lang_code] = $lang->sef;
 			}
 		}
@@ -145,8 +113,7 @@ abstract class JoomportfolioHelperRoute
 		$language	= isset($needles['language']) ? $needles['language'] : '*';
 
 		// Prepare the reverse lookup array.
-		if (!isset(self::$lookup[$language]))
-		{
+		if (!isset(self::$lookup[$language])) {
 			self::$lookup[$language] = array();
 
 			$component	= JComponentHelper::getComponent('com_joomportfolio');
@@ -154,30 +121,25 @@ abstract class JoomportfolioHelperRoute
 			$attributes = array('component_id');
 			$values = array($component->id);
 
-			if ($language != '*')
-			{
+			if ($language != '*') {
 				$attributes[] = 'language';
 				$values[] = array($needles['language'], '*');
 			}
 
-			$items		= $menus->getItems($attributes, $values);
+			$items = $menus->getItems($attributes, $values);
+            self::$menu_items[$language] = $items;
 
-			foreach ($items as $item)
-			{
-				if (isset($item->query) && isset($item->query['view']))
-				{
+			foreach ($items as $item) {
+				if (isset($item->query) && isset($item->query['view'])) {
 					$view = $item->query['view'];
-					if (!isset(self::$lookup[$language][$view]))
-					{
+					if (!isset(self::$lookup[$language][$view])) {
 						self::$lookup[$language][$view] = array();
 					}
 					if (isset($item->query['id'])) {
-
 						// here it will become a bit tricky
 						// language != * can override existing entries
 						// language == * cannot override existing entries
-						if (!isset(self::$lookup[$language][$view][$item->query['id']]) || $item->language != '*')
-						{
+						if (!isset(self::$lookup[$language][$view][$item->query['id']]) || $item->language != '*') {
 							self::$lookup[$language][$view][$item->query['id']] = $item->id;
 						}
 					}
@@ -185,16 +147,11 @@ abstract class JoomportfolioHelperRoute
 			}
 		}
 
-		if ($needles)
-		{
-			foreach ($needles as $view => $ids)
-			{
-				if (isset(self::$lookup[$language][$view]))
-				{
-					foreach ($ids as $id)
-					{
-						if (isset(self::$lookup[$language][$view][(int) $id]))
-						{
+		if ($needles) {
+			foreach ($needles as $view => $ids) {
+				if (isset(self::$lookup[$language][$view])) {
+					foreach ($ids as $id) {
+						if (isset(self::$lookup[$language][$view][(int) $id])) {
 							return self::$lookup[$language][$view][(int) $id];
 						}
 					}
@@ -203,9 +160,18 @@ abstract class JoomportfolioHelperRoute
 		}
 
 		$active = $menus->getActive();
-		if ($active && $active->component == 'com_joomportfolio' && ($active->language == '*' || !JLanguageMultilang::isEnabled()))
-		{
-			return $active->id;
+
+		if ($active && ($active->language == '*' || !JLanguageMultilang::isEnabled())) {
+		    if($active->component == 'com_joomportfolio'){
+                return $active->id;
+            } else {
+		        //Search Results Page
+		        if($active->component == 'com_search' && $active->link == 'index.php?option=com_search&view=search'
+                    && !empty(self::$menu_items[$language][0])
+                ) {
+                    return self::$menu_items[$language][0]->id;
+                }
+            }
 		}
 
 		// if not found, return language specific home link
