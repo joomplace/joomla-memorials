@@ -66,7 +66,7 @@ class JoomPortfolioViewItem extends BaseView
             $results = $dispatcher->trigger('onPortfolioAfterDisplay', array(&$item, &$this->params));
             $item->event->afterDisplay = trim(implode("\n", $results));
 
-            $model->hit();
+            $model->hit($item->id);
 
             if ($this->params->get('item_rating_enabled', 1)) {
                 $this->rating = $this->getRatingStars($item->id, $item->rating_sum, $item->rating_count);
