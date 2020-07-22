@@ -349,7 +349,6 @@ class JoomPortfolioHelper
         $extension = 'com_' . $mode;
         JFactory::getLanguage()->load($extension, JPATH_ADMINISTRATOR, null, true);
         // JFactory::getLanguage()->load($extension, JPATH_ADMINISTRATOR.DIRECTORY_SEPARATOR.'language'.DIRECTORY_SEPARATOR.JFactory::getLanguage()->getTag());
-
     }
 
 
@@ -514,7 +513,6 @@ class JoomPortfolioHelper
 
     public static function showItem($row, $rating, $custom_array, $image_array, $params, $pdf, $audio, $comments, $video)
     {
-        //die(var_dump($row));
         $doc = JFactory::getDocument();
         if ($row->metadesc)
             $doc->setMetaData('description', $row->metadesc);
@@ -611,7 +609,7 @@ class JoomPortfolioHelper
                 . 'width:auto;'
                 . 'height:90px;}';
             $doc->addStyleDeclaration($style);
-            for ($i = 0; $i < count($image_array); $i++) {
+           for ($i = 0; $i < count($image_array); $i++) {
                 $main_img .= '<li><img  data-copyrait="'. $img_copyright.'" data-title="' . $img_description . '" title="'.$img_title.'" src="' . JURI::base() . 'images/joomportfolio/' . $image_array[$i]->item_id . '/thumb/' . $image_array[$i]->thumb . '"  alt=""></li>';
             }
             $main_img .= ' </ul>';
@@ -1081,7 +1079,7 @@ class JoomPortfolioHelper
         if ($count_comments) {
 
             for ($i = 0; $i < $count_comments; $i++) {
-                $str .= '<div class="jp-post-comment id="comment' . $comments[$i]->id . '">';
+                $str .= '<div class="jp-post-comment" id="comment' . $comments[$i]->id . '">';
                 $str .= '<div class="jp-comment-info">';
                 $str .= '<div class="jp-comment-infoblock">';
                 $str.='<span class="jp-comuser-name">';
