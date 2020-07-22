@@ -311,6 +311,7 @@ class JoomPortfolioModelItem extends BaseItem
         $query->from('#__jp3_comments AS p');
         $query->innerJoin('`#__users` AS `u` ON `u`.id=`p`.`user_id`');
         $query->where('p.item_id=' . (int)$id);
+        $query->where('p.published=1');
         $query->order('p.date DESC');
         $db->setQuery($query);
         $comments= $db->loadObjectList();
