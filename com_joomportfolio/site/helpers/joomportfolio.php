@@ -1124,6 +1124,7 @@ class JoomPortfolioHelper
         $query->innerJoin('#__jp3_condolence AS c ON c.id=o.condole_id');
         $query->innerJoin('#__users AS u ON u.id=o.user_id');
         $query->where('o.item_id=' . (int)$id . ' AND o.published=1');
+        $query->order('`o`.`created` DESC');
         $db->setQuery($query);
         $ornaments = $db->loadObjectList();
         $count = !empty($ornaments) ? count($ornaments) : 0;
