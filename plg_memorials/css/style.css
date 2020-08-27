@@ -385,6 +385,7 @@ div.jp-main-cat {
 }
 .ceraBox {
     width: 180px !important;
+    height: auto;
 }
 .carousel {
     width: 180px!important;
