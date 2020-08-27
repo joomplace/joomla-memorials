@@ -78,9 +78,10 @@ a.image {
 }
 #portfolio div#gallery-main {
     float: left;
-    min-width: 320px!important;
+    min-width: 230px!important;
     position: relative;
     margin-bottom: 10px;
+    margin-right: 10px;
 }
 div.loading {
     background:#FFF url(../images/loading.gif) 50% 50% no-repeat;
@@ -269,7 +270,7 @@ div#system-message-container{
     z-index: 3;
 }
 .gallery{
-    min-width: 362px;
+    /*min-width: 362px;*/
 }
 a.main-img{
     display: inline-block;

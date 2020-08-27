@@ -46,6 +46,7 @@ a:hover {
 span.mod_memorials_text img {
   text-align: left;
   margin-right: 5px;
+  max-width: 50%;
 }
 
 .mod_memorials_caption {
