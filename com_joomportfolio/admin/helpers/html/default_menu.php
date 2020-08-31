@@ -311,17 +311,14 @@ $mode=JoomPortfolioHelper::getMode();
                 }
                 ?>
 
-
                 <ul class="nav pull-right">
                     <li id="fat-menu" class="dropdown">
-                        <a href="#" id="help" role="button" class="dropdown-toggle"
-                           data-toggle="dropdown"><?php echo JText::_('COM_JOOMPORTFOLIO_SUBMENU_HELP') ?><b
-                                class="caret"></b></a>
+                        <a href="#" id="help" role="button" class="dropdown-toggle" data-toggle="dropdown"><?php echo JText::_('COM_JOOMPORTFOLIO_SUBMENU_HELP') ?><b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="help">
-                        <?php
-                       echo  JoomPortfolioHelper::helpComponentXml();
-                        ?>
-                            </ul>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.joomplace.com/video-tutorials-and-documentation/online-memorials-directory/index.html" target="_blank"><?php echo JText::_('COM_JOOMPORTFOLIO_HELPMENU_HELP') ?></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.joomplace.com/support/helpdesk.html" target="_blank"><?php echo JText::_('COM_JOOMPORTFOLIO_HELPMENU_HELPDESK') ?></a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.joomplace.com/support/helpdesk/post-purchase-questions/ticket/create.html" target="_blank"><?php echo JText::_('COM_JOOMPORTFOLIO_HELPMENU_REQUEST') ?></a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
