@@ -43,21 +43,10 @@ JHtml::_('behavior.formvalidation');
         jQuery('#viewTabs a:first').tab('show');
         //jQuery('#socialTabs a:first').tab('show');
 
-        updateGooglePlusPreview();
         updateTwitterPreview();
         updateLinkedinPreview();
         updateFacebookPreview();
         updatePinterestPreview();
-
-        jQuery('#jform_social_google_plus_size').on("click", "input", function (e) {
-            var value = jQuery(e.target).val();
-            onRadioGooglePlusSizeClick(value, e);
-        });
-
-        jQuery('#jform_social_google_plus_annotation').on("click", "input", function (e) {
-            var value = jQuery(e.target).val();
-            onRadioGooglePlusAnnotationClick(value, e);
-        });
 
         jQuery('#jform_social_twitter_size').on("click", "input", function (e) {
             var value = jQuery(e.target).val();
@@ -90,16 +79,6 @@ JHtml::_('behavior.formvalidation');
         });
 
     });
-
-
-    function updateGooglePlusPreview() {
-        var size = BootstrapFormHelper.getRadioGroupValue('jform_social_google_plus_size');
-        var annotation = BootstrapFormHelper.getRadioGroupValue('jform_social_google_plus_annotation');
-
-        var previewImg = document.getElementById('social_google_plus_preview');
-
-        previewImg.setAttribute('src', '<?php echo JURI::root().'administrator/components/com_joomportfolio/assets/images/social/'; ?>' + 'googleplus-' + size + '-' + annotation + '.png');
-    }
 
     function updateTwitterPreview() {
         var size = BootstrapFormHelper.getRadioGroupValue('jform_social_twitter_size');
@@ -145,15 +124,6 @@ JHtml::_('behavior.formvalidation');
         var previewImg = document.getElementById('social_pinterest_preview');
 
         previewImg.setAttribute('src', '<?php echo JURI::root().'administrator/components/com_joomportfolio/assets/images/social/'; ?>' + 'pinterest-' + layout + '.png');
-    }
-
-    function onRadioGooglePlusSizeClick(sender, event) {
-
-        updateGooglePlusPreview();
-    }
-
-    function onRadioGooglePlusAnnotationClick(sender, event) {
-        updateGooglePlusPreview();
     }
 
     function onRadioTwitterSizeClick(sender, event) {
@@ -293,8 +263,6 @@ echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_JOOMPORTFOLI
 <div id="j-main-container" class="span12 form-horizontal">
 
 <ul class="nav nav-tabs" id="viewTabs">
-    <li><a href="#tab_social_google"
-           data-toggle="tab"><?php echo  JText::_("COM_JOOMPORTFOLIO_BE_CONFIG_GOOGLEPLUS_SUBPANEL");?></a></li>
     <li><a href="#tab_social_twitter"
            data-toggle="tab"><?php echo  JText::_("COM_JOOMPORTFOLIO_BE_CONFIG_TWITTER_SUBPANEL");?></a></li>
     <li><a href="#tab_social_linkedin"
@@ -306,85 +274,6 @@ echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::_('COM_JOOMPORTFOLI
 </ul>
 
 <div class="tab-content">
-
-<?php
-
-//==================================================
-// Google+.
-//==================================================
-?>
-
-<div class="tab-pane" id="tab_social_google">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th><?php echo JText::_('COM_JOOMPORTFOLIO_CONFIGURATIONS_TITLE');?></th>
-            <th><?php echo JText::_('COM_JOOMPORTFOLIO_CONFIGURATIONS_OPTION');?></th>
-            <th><?php echo JText::_('COM_JOOMPORTFOLIO_CONFIGURATIONS_DESCRIPTION');?></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <?php echo $this->form->getLabel('social_google_plus_use'); ?>
-            </td>
-            <td>
-                <?php echo $this->form->getInput('social_google_plus_use'); ?>
-            </td>
-            <td><?php echo JText::_("COM_JOOMPORTFOLIO_BE_CONFIG_GOOGLEPLUS_USE_DESC"); ?></td>
-        </tr>
-        <tr>
-            <td>
-                <?php echo $this->form->getLabel('social_google_plus_size'); ?>
-            </td>
-            <td>
-                <?php echo $this->form->getInput('social_google_plus_size'); ?>
-            </td>
-            <td>
-                <?php echo JText::_("COM_JOOMPORTFOLIO_BE_CONFIG_GOOGLEPLUS_SIZE_DESC");?>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <?php echo $this->form->getLabel('social_google_plus_annotation'); ?>
-            </td>
-            <td>
-                <?php echo $this->form->getInput('social_google_plus_annotation'); ?>
-            </td>
-            <td>
-                <?php echo JText::_("COM_JOOMPORTFOLIO_BE_CONFIG_GOOGLEPLUS_ANNOTATION_DESC"); ?>
-            </td>
-        </tr>
-        <tr>
-            <?php
-            $input = $this->form->getField('social_google_plus_language');
-            $input->addOptions($this->googlePlusLanguageOptions);
-            ?>
-            <td>
-                <?php echo $input->getLabel(); ?>
-            </td>
-            <td>
-                <?php echo $input->getInput(); ?>
-            </td>
-            <td><?php echo JText::_("COM_JOOMPORTFOLIO_BE_CONFIG_GOOGLEPLUS_LANGUAGE_DESC");?></td>
-        </tr>
-        <tr>
-            <td>
-                <?php
-                echo JHTML::_("tooltip", JText::_("COM_JOOMPORTFOLIO_BE_CONFIG_GOOGLEPLUS_PREVIEW_DESC") . '<br/><br/>' .
-                    '<span>' . "* " . JText::_("COM_JOOMPORTFOLIO_BE_CONFIG_GOOGLEPLUS_PREVIEW_NOLANG") . '</span>',
-                    JText::_("COM_JOOMPORTFOLIO_BE_CONFIG_GOOGLEPLUS_PREVIEW"), null,
-                    '<label>' . JText::_("COM_JOOMPORTFOLIO_BE_CONFIG_GOOGLEPLUS_PREVIEW") . '</label>', null);
-                ?>
-            </td>
-            <td>
-                <img id="social_google_plus_preview" class="html5fb_google_plus_preview"/>
-            </td>
-            <td></td>
-        </tr>
-        </tbody>
-    </table>
-</div>
 
 <?php
 //==================================================
