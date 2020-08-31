@@ -408,25 +408,4 @@ class JoomPortfolioHelper {
         }
     }
 
-    public static function helpComponentXml(){
-        $mode=self::getMode();
-        if(!$mode){
-           $mode='joomportfolio';
-       }
-	   if(file_exists(JPATH_SITE.'/plugins/portfolio/'.str_replace('settings_','',$mode).'/'.$mode.'.xml')){
-			$xml_str = file_get_contents(JPATH_SITE.'/plugins/portfolio/'.str_replace('settings_','',$mode).'/'.$mode.'.xml');
-			$xml = new SimpleXMLElement($xml_str);
-			$items = $xml->xpath('*/item');
-
-
-			$str='';
-
-			foreach($items as $item) {
-				$str.='<li role="presentation">';
-				$str.='<a role="menuitem" tabindex="-1" href="'.$item['url'].'" target="_blank">'.$item['title'].'</a></li>';
-			}
-		}
-
-        return $str;
-    }
 }
