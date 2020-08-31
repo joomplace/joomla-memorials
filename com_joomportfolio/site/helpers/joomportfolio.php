@@ -429,8 +429,7 @@ class JoomPortfolioHelper
             // Social intergation.
             //==================================================
 
-            if ((int)$settings->social_google_plus_use == 1 ||
-                (int)$settings->social_twitter_use == 1 ||
+            if ((int)$settings->social_twitter_use == 1 ||
                 (int)$settings->social_linkedin_use == 1 ||
                 (int)$settings->social_facebook_use == 1 ||
                 (int)$settings->social_pinterest_use == 1
@@ -438,18 +437,6 @@ class JoomPortfolioHelper
                 $html[] = '<div class="portfolio-social">';
 
                 $pageLink = JRoute::_('index.php?option=com_joomportfolio&view=item&id=' . (int)$id, false, -1);
-                //JRoute::_('index.php?option='.COMPONENT_OPTION.'&view=publication&id='.$item->c_id.'&Itemid='.COMPONENT_ITEM_ID, false, -1);
-
-                if ((int)$settings->social_google_plus_use == 1) {
-
-                    $html[] = '<div class="portfolio-social-btn">' .
-                        '<div class="g-plusone" data-width="70"' .
-                        ' data-size="' . $settings->social_google_plus_size . '"' .
-                        ' data-annotation="' . $settings->social_google_plus_annotation . '"' .
-                        'class="btn" href="' . $pageLink . '"' .
-                        '></div>' .
-                        '</div>';
-                }
 
                 if ((int)$settings->social_twitter_use == 1) {
                     $html[] = '<div class="portfolio-social-btn">' .
