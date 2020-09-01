@@ -187,21 +187,12 @@ class com_joomportfolioInstallerScript {
                 <td colspan="2" style="padding-left:20px">
                     <div style="font-size:1.2em">
                         <p style="font-size:12px;"><span style="font-size:14pt;">Say your "Thank you" to Joomla community</span> for WonderFull Joomla CMS and <span style="font-size:14pt;">help it</span> by sharing your experience with this component. It will only take 1 min for registration on <a href="http://extensions.joomla.org" target="_blank">http://extensions.joomla.org</a> and 3 minutes to write useful review! A lot of people will thank you!<br />
-                            <a href="http://extensions.joomla.org/extensions/directory-a-documentation/portfolio/11841" target="_blank"><img src="http://www.joomplace.com/components/com_jparea/assets/images/rate-2.png" title="Rate Us!" alt="Rate us at Extensions Joomla.org"  style="padding-top:5px;"/></a></p>
+                            <a href="https://extensions.joomla.org/extension/vertical-markets/thematic-directory/online-memorials-directory/" target="_blank"><img src="http://www.joomplace.com/components/com_jparea/assets/images/rate-2.png" title="Rate Us!" alt="Rate us at Extensions Joomla.org"  style="padding-top:5px;"/></a></p>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td colspan="2" style="background-color: #e7e8e9;text-align:left; font-size:14px; font-weight:400; line-height:18px "><strong><img src="<?php echo $imgpath; ?>tick.png"/>Latest changes: </strong></td>
-            </tr>
         </table>
         <?php
-        jimport('joomla.filesystem.file');
-        $file = JPATH_ROOT . DS . 'administrator' . DS . 'components' . DS . 'com_joomportfolio' . DS . 'changelog.txt';
-        if (file_exists($file)) {
-            $content = file_get_contents($file);
-            echo '<pre style="height:400px; overflow: auto;" >' . $content . '</pre>';
-        }
     }
 
 }
