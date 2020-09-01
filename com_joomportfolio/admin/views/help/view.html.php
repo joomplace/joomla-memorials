@@ -16,6 +16,9 @@ class JoomPortfolioViewHelp extends JViewLegacy
 {
     function display($tpl = null)
     {
+        //01.09.2020 Temporary solution:
+        JFactory::getApplication()->redirect('index.php?option=com_joomportfolio');
+
         $submenu = 'help';
         JoomPortfolioHelper::showTitle($submenu);
         JoomPortfolioHelper::getCSSJS();
