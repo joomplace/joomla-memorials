@@ -55,17 +55,6 @@ JHtml::_('behavior.tooltip');
                 <td class="portfolio_control_panel_current_version"><?php echo JoomPortfolioHelper::getVersion();  ?></td>
             </tr>
             <tr>
-                <td><?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_LVER') . ':'; ?></td>
-                <td>
-                    <div id="joomport_LatestVersion">
-                        <a href="check_now" onclick="return joomport_CheckVersion();"
-                           class="update_link">
-                            <?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_CHECKNOW'); ?>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
                 <td><?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_SF') . ':'; ?></td>
                 <td>
                     <a target="_blank" href="http://www.JoomPlace.com/support" >http://www.JoomPlace.com/support</a>
