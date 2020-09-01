@@ -19,10 +19,7 @@ JHtml::_('behavior.tooltip');
             for ($i = 0; $i < count($menu); $i++) {
                 ?>
                 <div onclick="window.location = '<?php echo $menu[$i]['url']; ?>'" class="pgm-dashboard_button btn">
-                    <img src="<?php
-                    echo $menu[$i]['icon'];
-                    ?>"/>
-
+                    <img src="<?php echo $menu[$i]['icon']; ?>"/>
                     <div class="pgm-dashboard_button_text"><?php echo $menu[$i]['title']; ?></div>
                 </div>
             <?php
@@ -32,17 +29,12 @@ JHtml::_('behavior.tooltip');
         }
         ?>
 
-        <div id="dashboard_items"><a
-                href="index.php?option=com_joomportfolio&view=dashboard_items"><?php echo JText::_('COM_JOOMPORTFOLIO_MANAGE_DASHBOARD_ITEMS'); ?></a>
+        <div id="dashboard_items">
+            <a href="index.php?option=com_joomportfolio&view=dashboard_items"><?php echo JText::_('COM_JOOMPORTFOLIO_MANAGE_DASHBOARD_ITEMS'); ?></a>
         </div>
     </div>
 
-
-
-
-
     <div id="j-main-container" class="span6 form-horizontal portfolio_control_panel_container well" style="margin-right: 0px;">
-
         <table class="table">
             <tr>
                 <th colspan="100%" class="portfolio_control_panel_title">
@@ -74,17 +66,16 @@ JHtml::_('behavior.tooltip');
                             <div class="accordion-inner">
                                 <table border="1" cellpadding="5" width="100%" class="thank_tabl">
                                     <tr>
-
                                     </tr>
                                     <tr>
                                         <td style="padding-left:20px">
                                             <div class="thank_fdiv">
                                                 <p style="font-size:12px;">
-                                                    <span style="font-size:14pt;"><?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_STH'); ?></span> <?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_STH_AND'); ?> <span style="font-size:14pt;"><?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_STH_HELP_IT'); ?></span> <?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_STH_SHAR'); ?> <a href="http://extensions.joomla.org/extensions/communities-a-groupware/ratings-a-reviews/11305" target="_blank">http://extensions.joomla.org/</a> <?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_STH_ANWR'); ?>
+                                                    <span style="font-size:14pt;"><?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_STH'); ?></span> <?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_STH_AND'); ?> <span style="font-size:14pt;"><?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_STH_HELP_IT'); ?></span> <?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_STH_SHAR'); ?> <a href="https://extensions.joomla.org/extension/vertical-markets/thematic-directory/online-memorials-directory/" target="_blank">http://extensions.joomla.org/</a> <?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_STH_ANWR'); ?>
                                                 </p>
                                             </div>
                                             <div style="float:right; margin:3px 5px 5px 5px;">
-                                                <a href="http://extensions.joomla.org/extensions/communities-a-groupware/ratings-a-reviews/11305" target="_blank">
+                                                <a href="https://extensions.joomla.org/extension/vertical-markets/thematic-directory/online-memorials-directory/" target="_blank">
                                                     <img src="http://www.joomplace.com/components/com_jparea/assets/images/rate-2.png" />
                                                 </a>
                                             </div>
@@ -98,5 +89,4 @@ JHtml::_('behavior.tooltip');
                 </td>
             </tr>
         </table>
-
     </div>
