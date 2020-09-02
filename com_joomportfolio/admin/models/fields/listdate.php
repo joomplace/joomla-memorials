@@ -34,8 +34,12 @@ class JFormFieldListdate extends JFormField
      */
     protected function getInput()
     {
-        
         $str='<select id="jform_field_format" name="'.$this->name.'">';
+        $str .= '<option value="'.JText::_('COM_JOOMPORTFOLIO_DATE_FORMAT').'" ';
+        if($this->value==JText::_('COM_JOOMPORTFOLIO_DATE_FORMAT')){
+            $str .= ' selected="selected" ';
+        }
+        $str .='>'.JHTML::_("date",'' , 'COM_JOOMPORTFOLIO_DATE_FORMAT', NULL).'</option>';
         $str .= '<option value="l, d F Y" ';
             if($this->value=="l, d F Y"){
                 $str .= ' selected="selected" ';
