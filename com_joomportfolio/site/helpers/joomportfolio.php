@@ -697,7 +697,7 @@ class JoomPortfolioHelper
         $replaseTo[] = (int)$params->item_rating_enabled ? $row->rating : '';
 
         $replaseFrom[] = '[date_of_created]';
-        $replaseTo[] = JHTML::_('date', $row->date, 'd F Y', NULL);
+        $replaseTo[] = JHTML::_('date', $row->date, 'COM_JOOMPORTFOLIO_DATE_FORMAT', NULL);
 
         $replaseFrom[] = '[item_category_name]';
         $cathref='<a href="';
@@ -1072,7 +1072,7 @@ class JoomPortfolioHelper
                 $str.='<span class="jp-comuser-name">';
                 $str.=$comments[$i]->user_name;
                 $str.='</span><span class="jp-post-date">';
-                $str .=  $comments[$i]->date . '</span>';
+                $str .=  JHTML::_('date', $comments[$i]->date, 'COM_JOOMPORTFOLIO_DATE_FORMAT', NULL) . '</span>';
                 $str .= '</div>';
                 $str .= '</div>';
 
@@ -1131,7 +1131,7 @@ class JoomPortfolioHelper
         for ($i = 0; $i < $count; $i++) {
 
             $str .= '<div class="ornament-item ">';
-            $str .= '<img  rel="popover" data-placement="top" data-trigger="hover" data-content="'.$ornaments[$i]->name.' <br />'.JFactory::getDate($ornaments[$i]->created)->format("d F Y").'" src="' . JUri::root() . 'images/joomportfolio/condolences/' . $ornaments[$i]->full . '"/>';
+            $str .= '<img  rel="popover" data-placement="top" data-trigger="hover" data-content="'.$ornaments[$i]->name.' <br />'.JFactory::getDate($ornaments[$i]->created)->format(JText::_('COM_JOOMPORTFOLIO_DATE_FORMAT')).'" src="' . JUri::root() . 'images/joomportfolio/condolences/' . $ornaments[$i]->full . '"/>';
             $str .= '</div>';
 
         }
