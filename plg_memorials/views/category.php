@@ -181,22 +181,6 @@ $pathway->addItem($this->category->title,'');
 
 
                     <div class="clear">&nbsp;</div>
-                    <?php if ((int)$this->settings->social_google_plus_use == 1) { ?>
-
-                    <script type="text/javascript">
-                        window.___gcfg = {lang: '<?php echo (int)$this->settings->social_google_plus_language; ?>'};
-                        (function () {
-                            var po = document.createElement('script');
-                            po.type = 'text/javascript';
-                            po.async = true;
-                            po.src = 'https://apis.google.com/js/plusone.js';
-                            console.log(document.getElementsByTagName('script'))
-                            var s = document.getElementsByTagName('script')[0];
-                            s.parentNode.insertBefore(po, s);
-                        })();
-                    </script>
-
-                <?php } ?>
 
                     <?php if ((int)$this->settings->social_twitter_use == 1) { ?>
 
