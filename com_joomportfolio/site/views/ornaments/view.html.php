@@ -16,11 +16,9 @@ class JoomPortfolioViewOrnaments extends BaseView
 
     function display($tpl = null)
     {
-
         $this->images = $this->getOrnaments();
 
-
-        if (count($errors = $this->get('Errors'))) {
+        if (!empty($errors = $this->get('Errors'))) {
             JError::raiseError(500, implode('<br />', $errors));
             return false;
         }
@@ -29,8 +27,8 @@ class JoomPortfolioViewOrnaments extends BaseView
     }
 
     function getOrnaments()
-    {   $db = JFactory::getDBO();
-
+    {
+        $db = JFactory::getDBO();
         $query = $db->getQuery(true);
         $query->select('full, id');
         $query->from('#__jp3_condolence');
