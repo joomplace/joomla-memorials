@@ -72,7 +72,7 @@ class JoomPortfolioViewItem extends BaseView
                 $this->rating = $this->getRatingStars($item->id, $item->rating_sum, $item->rating_count);
             }
             $this->settings = JoomPortfolioHelper::getSetting($mode);
-            if (count($errors = $model->getErrors())) {
+            if (!empty($errors = $model->getErrors())) {
                 JError::raiseError(500, implode('<br />', $errors));
                 return false;
             }

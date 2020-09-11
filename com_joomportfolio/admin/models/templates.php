@@ -66,7 +66,7 @@ class JoomPortfolioModelTemplates extends JModelList
             } else {
                 $search = $this->_db->quote('%' . $search . '%', true);
 
-                $query->where('(mode="' . $mode . '" AND name LIKE ' . $search . ' OR label  LIKE ' . $search . ')');
+                $query->where('(mode="' . $mode . '" AND name LIKE ' . $search . ')');
             }
         }
 
