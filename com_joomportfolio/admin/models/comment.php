@@ -45,14 +45,13 @@ class JoomPortfolioModelComment extends JModelAdmin
     {
         $table = $this->getTable();
 
-        if (!$table->bind($data)) {
-            $this->setError($table->getError());
-            return false;
-        }
         $data['mode'] = JoomPortfolioHelper::getMode();
         $data['user_id'] = (int)JFactory::getUser()->id;
 
-        // Bind the data.
+        if(!$data['date'] || $data['date'] == '0000-00-00 00:00:00') {
+            $data['date'] = date('Y-m-d H:i:s');
+        }
+
         if (!$table->bind($data)) {
             $this->setError($table->getError());
             return false;

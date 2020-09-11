@@ -1064,34 +1064,27 @@ class JoomPortfolioHelper
         }
 
         if ($count_comments) {
-
             for ($i = 0; $i < $count_comments; $i++) {
                 $str .= '<div class="jp-post-comment" id="comment' . $comments[$i]->id . '">';
                 $str .= '<div class="jp-comment-info">';
                 $str .= '<div class="jp-comment-infoblock">';
-                $str.='<span class="jp-comuser-name">';
-                $str.=$comments[$i]->user_name;
-                $str.='</span><span class="jp-post-date">';
-                $str .=  JHTML::_('date', $comments[$i]->date, 'COM_JOOMPORTFOLIO_DATE_FORMAT', NULL) . '</span>';
+                $str.='<span class="jp-comuser-name">'.$comments[$i]->user_name.'</span>';
+                if($comments[$i]->date && $comments[$i]->date != '0000-00-00') {
+                    $str .= '<span class="jp-post-date">'.JHTML::_('date', $comments[$i]->date, 'COM_JOOMPORTFOLIO_DATE_FORMAT', null).'</span>';
+                }
                 $str .= '</div>';
                 $str .= '</div>';
-
-                $str .= '<div class="jp-commenttext" id="desc-comment-' . $comments[$i]->id . '">';
-                $str .= $comments[$i]->comment;
-                $str .= '</div>';
+                $str .= '<div class="jp-commenttext" id="desc-comment-'.$comments[$i]->id.'">'.$comments[$i]->comment.'</div>';
                 $str .= '</div>';
             }
-
-
         }else{
             $str .= '<div class="jp-post-not-comment" id="jp-comments-not-found">';
             $str .= '<ul class="author hcard">';
-            $str .= '<li >';
-            $str .= JText::_("COM_JOOMPORTFOLIO_COMMENTS_NOT_FOUND");
-            $str .= '</li>';
+            $str .= '<li >'.JText::_("COM_JOOMPORTFOLIO_COMMENTS_NOT_FOUND").'</li>';
             $str .= '</ul>';
             $str .= '</div>';
         }
+
         $str .= '</div>';
         return $str;
     }
