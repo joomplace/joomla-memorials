@@ -34,7 +34,7 @@ class JoomPortfolioControllerComment extends JControllerForm {
         $this->setRedirect(JRoute::_('index.php?option=' . $this->option . '&view=' . $this->view_list . $tmpl, false));
     }
 
-    public function save()
+    public function save($key = null, $urlVar = null)
     {
         $requestData = $this->input->post->get('jform', array(), 'array');
         $task = $this->input->post->get('task', '', 'CMD');
@@ -49,7 +49,6 @@ class JoomPortfolioControllerComment extends JControllerForm {
             JError::raiseError(500, $model->getError());
             return false;
         }
-
 
         if(!$model->check($requestData)){
             $this->setMessage($model->getError());
