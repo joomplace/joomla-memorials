@@ -696,6 +696,11 @@ class JoomPortfolioHelper
 
         $replaseTo[] = (int)$params->item_rating_enabled ? $row->rating : '';
 
+
+        $lang = JFactory::getLanguage();
+        if(!$lang->hasKey('COM_JOOMPORTFOLIO_DATE_FORMAT')){
+            $lang->load('com_joomportfolio', JPATH_ADMINISTRATOR, $lang->getTag(), true);
+        }
         $replaseFrom[] = '[date_of_created]';
         $replaseTo[] = JHTML::_('date', $row->date, 'COM_JOOMPORTFOLIO_DATE_FORMAT', NULL);
 
@@ -1070,6 +1075,10 @@ class JoomPortfolioHelper
                 $str .= '<div class="jp-comment-infoblock">';
                 $str.='<span class="jp-comuser-name">'.$comments[$i]->user_name.'</span>';
                 if($comments[$i]->date && $comments[$i]->date != '0000-00-00') {
+                    $lang = JFactory::getLanguage();
+                    if(!$lang->hasKey('COM_JOOMPORTFOLIO_DATE_FORMAT')){
+                        $lang->load('com_joomportfolio', JPATH_ADMINISTRATOR, $lang->getTag(), true);
+                    }
                     $str .= '<span class="jp-post-date">'.JHTML::_('date', $comments[$i]->date, 'COM_JOOMPORTFOLIO_DATE_FORMAT', null).'</span>';
                 }
                 $str .= '</div>';
@@ -1121,13 +1130,17 @@ class JoomPortfolioHelper
             $str .= '<div><input type="button" id="ornament-submit" class="ornament-submit btn" onclick="addOrnament();" value="' . JText::_("COM_JOOMPORTFOLIO_ADD_ORNAMENT") . '"></div>';
             $str .= '</div>';
         }
-        for ($i = 0; $i < $count; $i++) {
 
+        $lang = JFactory::getLanguage();
+        if(!$lang->hasKey('COM_JOOMPORTFOLIO_DATE_FORMAT')){
+            $lang->load('com_joomportfolio', JPATH_ADMINISTRATOR, $lang->getTag(), true);
+        }
+        for ($i = 0; $i < $count; $i++) {
             $str .= '<div class="ornament-item ">';
             $str .= '<img  rel="popover" data-placement="top" data-trigger="hover" data-content="'.$ornaments[$i]->name.' <br />'.JFactory::getDate($ornaments[$i]->created)->format(JText::_('COM_JOOMPORTFOLIO_DATE_FORMAT')).'" src="' . JUri::root() . 'images/joomportfolio/condolences/' . $ornaments[$i]->full . '"/>';
             $str .= '</div>';
-
         }
+
         if(!$count){
             $str .= '<div class="jp-post-not-comment jp-not-found-wrapp"><ul>'.JText::_("COM_JOOMPORTFOLIO_VIDEO_NOT_FOUND").'</ul></div>';
         }

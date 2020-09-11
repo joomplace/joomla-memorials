@@ -34,6 +34,11 @@ class JFormFieldListdate extends JFormField
      */
     protected function getInput()
     {
+        $lang = JFactory::getLanguage();
+        if(!$lang->hasKey('COM_JOOMPORTFOLIO_DATE_FORMAT')){
+            $lang->load('com_joomportfolio', JPATH_ADMINISTRATOR, $lang->getTag(), true);
+        }
+
         $str='<select id="jform_field_format" name="'.$this->name.'">';
         $str .= '<option value="'.JText::_('COM_JOOMPORTFOLIO_DATE_FORMAT').'" ';
         if($this->value==JText::_('COM_JOOMPORTFOLIO_DATE_FORMAT')){
