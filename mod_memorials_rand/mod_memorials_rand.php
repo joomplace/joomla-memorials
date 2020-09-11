@@ -18,40 +18,36 @@ $helper = new modMemorialsRandHelper();
 $user = JFactory::getUser();
 $document = JFactory::getDocument();
 $app = JFactory::getApplication();
-$option = JRequest::getVar('option');
-$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
+$option = $app->input->get('option');
+$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
 
 $iCan = new stdClass();
 $iCan->manage = ($user->authorise('core.manage', 'com_joomportfolio'));
 $iCan->create = ($user->authorise('core.create', 'com_joomportfolio'));
 
-if (!$params->get('all_tags')) {
+if (empty($params->get('all_tags'))) {
     $tags_id = $params->get('tags');
-
-    if (count($tags_id) > 1 || (count($tags_id) == 1 && $tags_id[0] != 0))
+    if(!empty($tags_id)) {
         $list = $helper->getList($params);
-    else
+    } else {
         $list = $helper->getItemsList($params);
-}
-else
-    $list=null;
+    }
+} else {
     $list = $helper->getItemsList($params);
+}
 
 if (empty($list)) {
     echo '<small>' . JText::_('Memorials not found') . '</small>';
     return;
 }
 
-
 $isStatic = $params->get('isstatic');
-
 $show_add_new = (int) $params->get('show_add_new', 0);
 
 $document->addStyleSheet(JURI::root() . '/modules/mod_memorials_rand/tmpl/style.css');
 
 $modal = $params->get('ismodal');
 
-$document = JFactory::getDocument();
 JHtml::script(JURI::base() . 'modules/mod_memorials_rand/js/jplace.jquery.js');
 JHtml::script(JURI::base() . 'modules/mod_memorials_rand/js/jquery-ui/jquery-ui.js');
 JHtml::stylesheet(JURI::base() . 'modules/mod_memorials_rand/js/jquery-ui/jquery-ui.css');
