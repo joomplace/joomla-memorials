@@ -40,7 +40,7 @@ class JoomPortfolioViewTemplates extends JViewLegacy
     protected function addToolBar()
     {
         $this->canDo = $canDo = JoomPortfolioHelper::getAllActions();
-        JToolBarHelper::title(JText::_('COM_JOOMPORTFOLIO_MANAGER_FIELDS'), 'customs');
+        JToolBarHelper::title(JText::_('COM_JOOMPORTFOLIO_MANAGER_TEMPLATES'), 'customs');
         if ($canDo->get('core.admin')) {
             JToolBarHelper::editList('template.edit', 'JTOOLBAR_EDIT');
 

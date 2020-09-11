@@ -58,7 +58,7 @@ class JoomPortfolioViewComments extends JViewLegacy
     protected function addToolBar()
     {
         $this->canDo = $canDo = JoomPortfolioHelper::getAllActions();
-        JToolBarHelper::title(JText::_('COM_JOOMPORTFOLIO_MANAGER_ITEMS'), 'items');
+        JToolBarHelper::title(JText::_('COM_JOOMPORTFOLIO_MANAGER_COMMENTS'), 'items');
         if ($canDo->get('core.admin')) {
             JToolBarHelper::addNew('comment.add', 'JTOOLBAR_NEW');
             JToolBarHelper::editList('comment.edit', 'JTOOLBAR_EDIT');
