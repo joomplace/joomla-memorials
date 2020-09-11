@@ -478,7 +478,7 @@ public function showSelectImages() {
     {
         $db = JFactory::getDBO();
         if (!empty($data)) {
-            $count=count($data);
+            $count = count($data);
             for ($i = 0; $i < $count; $i++) {
                 $query = $db->getQuery(true);
                 $query->delete()
@@ -656,7 +656,7 @@ public function showSelectImages() {
         }
 
         for ($i = 0; $i < count($custom); $i++) {
-            if (count($custom[$i]['custom'])) {
+            if (!empty($custom[$i]['custom'])) {
                 if (is_array($custom[$i]['custom'])) {
                     foreach ($custom[$i]['custom'] as $key => $value) {
 
@@ -670,11 +670,11 @@ public function showSelectImages() {
 
 
         $custom_f = array();
-        if (count($custom)) {
+        if (!empty($custom)) {
             //add value to fields
             for ($i = 0; $i < count($custom); $i++) {
                 for ($j = 0; $j < count($fields); $j++) {
-                    if (count($custom[$i]['custom'])) {
+                    if (!empty($custom[$i]['custom'])) {
                         $value = $custom[$i]['custom'];
 
                         if ((int)$fields[$j]['id'] == (int)$custom[$i]['field_id']) {

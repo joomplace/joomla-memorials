@@ -272,7 +272,8 @@ class JoomPortfolioModelCategory extends JModelList
         $params= $db->loadResult();
 
         $settings=json_decode($params);
-        $cur_cat=(int)$settings->id;
+        $cur_cat = !empty($settings->id) ? $settings->id : 0;
+
         return  $cur_cat;
     }
 

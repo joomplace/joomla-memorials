@@ -41,19 +41,21 @@ class modMemorialsHelper
         $db->setQuery($query, 0, $limit);
         $results = $db->loadObjectList();
         $count=count($results);
+
         for($i=0;$i<$count;$i++){
             $results[$i]->slug=$results[$i]->slug.'&Itemid='.$Itemid;
-
         }
+
         foreach ($results as $category) {
             $out[$category->id] = $category;
-
-
         }
 
         $out = array_reverse($out, true);
         foreach ($out as $key=>$category) {
             if ($category->parent_id != 1) {
+                if(!isset($out[$category->parent_id]->childs)) {
+                    $out[$category->parent_id]->childs = array();
+                }
                 $out[$category->parent_id]->childs[] = $category;
                 unset($out[$key]);
             }
