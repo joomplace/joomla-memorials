@@ -46,7 +46,7 @@ class JoomPortfolioHelper {
             JText::_('COM_JOOMPORTFOLIO_SUBMENU_TEMPLATES'), 'index.php?option=com_joomportfolio&view=templates', $vName == 'templates');
 
         if(self::getMode()=='memorials'){
-            JHtmlSidebar::addEntry('<i class="icon-pictures"></i> '.
+            JHtmlSidebar::addEntry('<i class="icon-image"></i> '.
                 JText::_('COM_JOOMPORTFOLIO_CONDOLE_SUBMENU'), 'index.php?option=com_joomportfolio&view=images', $vName == 'images');
         }
     }
