@@ -25,7 +25,8 @@ class JimgHelper
      * $main_img_obj 		: main image
      ***/
     function getImage( $main_img_obj )
-    {global $type;
+    {
+        global $type;
         $type = 0;
         if (!is_resource($main_img_obj))
         {
@@ -426,7 +427,7 @@ class JimgHelper
      * $file=''				: file name to save !not ext!
      * $quality='75'		: quality !only $type=2
      */
-    function show($main_img_obj, $type=2, $file='', $quality='75')
+    function show($main_img_obj, $type=2, $file=null, $quality='75')
     {
         $main_img_obj= $this->getImage($main_img_obj);
 
@@ -454,6 +455,7 @@ class JimgHelper
                 return;
                 break;
         }
+
         return;
     }
 
