@@ -109,37 +109,32 @@ class JoomPortfolioModelItems extends JModelList {
 
     public function getImages($id)
     {
-
-            $db = $this->getDBO();
-
-            $query = $db->getQuery(true);
-            $query->select('pii.*');
-            $query->from('#__jp3_pictures AS pii');
-            $query->where('pii.item_id=' . (int)$id);
-            $query->order('is_default DESC');
-            $query->order('ordering');
-            $db->setQuery($query,0,1);
-            $image = $db->loadObject();
+        $db = $this->getDBO();
+        $query = $db->getQuery(true);
+        $query->select('pii.*');
+        $query->from('#__jp3_pictures AS pii');
+        $query->where('pii.item_id=' . (int)$id);
+        $query->order('is_default DESC');
+        $query->order('ordering');
+        $db->setQuery($query,0,1);
+        $image = $db->loadObject();
         return $image;
     }
 
     public function getItem($id)
     {
-
         $db = $this->getDBO();
-
         $query = $db->getQuery(true);
         $query->select('i.*');
         $query->from('#__jp3_items AS i');
         $query->where('i.id=' . (int)$id);
-               $db->setQuery($query);
+        $db->setQuery($query);
         $item =  $db->loadObject();
         return $item;
     }
 
     public function getFields($id)
     {
-
         $mode = JoomPortfolioHelper::getMode();
         $db = JFactory::getDBO();
 
@@ -148,6 +143,7 @@ class JoomPortfolioModelItems extends JModelList {
             . "\n WHERE mode='" . $mode . "'";
         $db->setQuery($query);
         $fields = $db->loadAssocList();
+
         for ($i = 0; $i < count($fields); $i++) {
             $fields[$i]['value'] = '';
         }
@@ -160,17 +156,20 @@ class JoomPortfolioModelItems extends JModelList {
         $ids = $db->loadAssocList();
 
         $custom = array();
+
         for ($i = 0; $i < count($ids); $i++) {
             $custom[$i]['custom'] = $ids[$i]['custom'];
             $custom[$i]['field_id'] = $ids[$i]['field_id'];
         }
 
         $field_ids = array();
+
         for ($i = 0; $i < count($fields); $i++) {
             $field_ids[$i] = intval($fields[$i]['id']);
         }
+
         for ($i = 0; $i < count($custom); $i++) {
-            if (count($custom[$i]['custom'])) {
+            if (!empty($custom[$i]['custom'])) {
                 if (is_array($custom[$i]['custom'])) {
                     foreach ($custom[$i]['custom'] as $key => $value) {
                         if (!in_array($key, $field_ids)) {
@@ -180,30 +179,26 @@ class JoomPortfolioModelItems extends JModelList {
                 }
             }
         }
-        $custom_f = array();
-        if (!empty($custom)) {
 
+        $custom_f = array();
+
+        if (!empty($custom)) {
             for ($i = 0; $i < count($custom); $i++) {
                 for ($j = 0; $j < count($fields); $j++) {
-                    if (count($custom[$i]['custom'])) {
+                    if (!empty($custom[$i]['custom'])) {
                         $value = $custom[$i]['custom'];
-
                         if ((int)$fields[$j]['id'] == (int)$custom[$i]['field_id']) {
-
                             $custom_f[$j]['value'] = $value;
                             $custom_f[$j]['name'] = $fields[$j]['name'];
                             $custom_f[$j]['label'] = $fields[$j]['label'];
                             $custom_f[$j]['def'] = $fields[$j]['def'];
                             $custom_f[$j]['type'] = $fields[$j]['type'];
                             $custom_f[$j]['format'] = $fields[$j]['format'];
-
                         }
-
                     }
                 }
             }
         }
-
 
         return $custom_f;
     }
