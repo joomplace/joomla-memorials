@@ -18,7 +18,23 @@
 		<folder>css</folder>
 		<folder>images</folder>
 		<folder>js</folder>
+        <folder>sql</folder>
     </files>
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
     <languages folder="language">
         <language tag="en-GB">en-GB/en-GB.plg_content_memorials.ini</language>
         <language tag="en-GB">en-GB/en-GB.plg_content_memorials.sys.ini</language>
