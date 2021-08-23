@@ -674,23 +674,23 @@ public function showSelectImages() {
             //add value to fields
             for ($i = 0; $i < count($custom); $i++) {
                 for ($j = 0; $j < count($fields); $j++) {
+                    $value = '';
                     if (!empty($custom[$i]['custom'])) {
                         $value = $custom[$i]['custom'];
+                    }
+                    if ((int)$fields[$j]['id'] == (int)$custom[$i]['field_id']) {
 
-                        if ((int)$fields[$j]['id'] == (int)$custom[$i]['field_id']) {
-
-                            $custom_f[$j]['value'] = $value;
-                            $custom_f[$j]['name'] = $fields[$j]['name'];
-                            $custom_f[$j]['label'] = $fields[$j]['label'];
-                            $custom_f[$j]['def'] = $fields[$j]['def'];
-                            $custom_f[$j]['type'] = $fields[$j]['type'];
-                            $custom_f[$j]['req'] = $fields[$j]['req'];
-                            $custom_f[$j]['catview'] = $fields[$j]['catview'];
-                            $custom_f[$j]['id'] = $fields[$j]['id'];
-
-                        }
+                        $custom_f[$j]['value'] = $value;
+                        $custom_f[$j]['name'] = $fields[$j]['name'];
+                        $custom_f[$j]['label'] = $fields[$j]['label'];
+                        $custom_f[$j]['def'] = $fields[$j]['def'];
+                        $custom_f[$j]['type'] = $fields[$j]['type'];
+                        $custom_f[$j]['req'] = $fields[$j]['req'];
+                        $custom_f[$j]['catview'] = $fields[$j]['catview'];
+                        $custom_f[$j]['id'] = $fields[$j]['id'];
 
                     }
+
                 }
             }
         }

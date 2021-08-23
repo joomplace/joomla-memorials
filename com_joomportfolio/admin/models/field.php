@@ -23,7 +23,8 @@ class JoomPortfolioModelField extends JModelAdmin
         $form = $this->loadForm($this->context . '.' . $this->getName(), $this->getName(), array('control' => 'jform', 'load_data' => false));
 
         $item = $this->getItem();
-        $item->required = (int)$item->req == 1 ? 1 : 0;
+        $item->required = $item->req;
+        $item->default = $item->def;
 
         $form->bind($item);
 
