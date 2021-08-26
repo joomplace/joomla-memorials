@@ -14,6 +14,7 @@
     <file type="module" id="memorials" client="site">mod_memorials.zip</file>
     <file type="module" id="memorials" client="site">mod_memorials_rand.zip</file>
     <file type="plugin" id="memorials" group="portfolio">plg_memorials.zip</file>
+    <file type="plugin" id="memorials" group="search">plg_search_memorials.zip</file>
   </files>
   <updateservers>
     <server type="collection" priority="1" name="Joomplace Update Site">http://www.joomplace.com/updates/collections.xml</server>
