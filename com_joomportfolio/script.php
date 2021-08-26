@@ -154,14 +154,28 @@ class com_joomportfolioInstallerScript {
         if (!defined('DS')) {
             define('DS', DIRECTORY_SEPARATOR);
         }
+
         $db = JFactory::getDBO();
         $db->setQuery('SELECT extension_id FROM #__extensions WHERE name="com_joomportfolio"');
         $c_id = (int) $db->loadResult();
 
-
         $db->setQuery('UPDATE #__menu SET component_id=' . $c_id . ' WHERE link LIKE "index.php?option=com_joomportfolio%" AND client_id=0');
         $db->execute();
 
+        //presetting some custom fields
+        JLoader::register('JoomPortfolioHelper', JPATH_ADMINISTRATOR . '/components/com_joomportfolio/helpers/joomportfolio.php');
+        $mode = JoomPortfolioHelper::getMode();
+        if(!$mode) {
+            $mode = 'memorials';
+        }
+        JLoader::register('JoomPortfolioTableField', JPATH_ADMINISTRATOR . '/components/com_joomportfolio/tables/field.php');
+        JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_joomportfolio/models');
+        $model_sampledata = JModelLegacy::getInstance('Sampledata', 'JoomPortfolioModel');
+        if($mode == 'joomportfolio') {
+            $model_sampledata->samplePortfolioCustomFields();
+        } else if($mode == 'memorials') {
+            $model_sampledata->sampleMemorialsCustomFields();
+        }
 
         $imgpath = JURI::root() . '/administrator/components/com_joomportfolio/assets/images/';
         ?>

@@ -13,7 +13,9 @@ $menu   = $app->getMenu();
 $active   = $menu->getActive();
 $pathway =$app->getPathway();
 $breadcrumb = $pathway->setPathway(array());
-$pathway->addItem($active->title,'');
+if(!empty($active)) {
+    $pathway->addItem($active->title,'');
+}
 if (isset($this->main_err)) {
     ?>
     <div class="main-error">

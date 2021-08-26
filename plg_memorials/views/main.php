@@ -12,8 +12,9 @@ $menu   = $app->getMenu();
 $active   = $menu->getActive();
 $pathway =$app->getPathway();
 $breadcrumb = $pathway->setPathway(array());
-$pathway->addItem($active->title,'');
-
+if(!empty($active)) {
+    $pathway->addItem($active->title,'');
+}
 ?>
 <link rel="stylesheet" href="<?php echo(JUri::root()); ?>plugins/portfolio/memorials/css/style.css" type="text/css" />
 <div id="portfolio" class="container container_6" style="width: auto !important;">
