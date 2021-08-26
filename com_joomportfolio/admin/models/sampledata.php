@@ -593,14 +593,14 @@ class JoomPortfolioModelSampledata extends JModelLegacy
         $check = $this->checkField($data);
         if (!$check) {
 
+            JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_joomportfolio/models');
             $model = JModelLegacy::getInstance('Field', 'JoomPortfolioModel', array('ignore_request' => true));
             $table = $model->getTable();
 
-            if (!$table->bind($data)) {
-                $model->setError($table->getError());
-                return false;
-            }
             $data['mode'] = JoomPortfolioHelper::getMode();
+            if(!$data['mode']) {
+                $data['mode'] = 'memorials';
+            }
 
             // Bind the data.
             if (!$table->bind($data)) {
