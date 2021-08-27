@@ -44,7 +44,10 @@ class JoomPortfolioModelCategory extends JModelList
     {
         $mode = JoomPortfolioHelper::getModeByCatId();
         $jinput = JFactory::getApplication()->input;
-        $alias = $jinput->get('id','','HTML');
+        $alias = $jinput->get('id', '', 'HTML');
+        if(!$alias) {
+            $alias = $jinput->get('cid', '', 'HTML');
+        }
         $alias=str_replace (":" , "-", $alias);
 
         if(!$alias){

@@ -1269,6 +1269,9 @@ class JoomPortfolioHelper
     {
         $jinput = JFactory::getApplication()->input;
         $alias = $jinput->get('id', '', 'HTML');
+        if(!$alias) {
+            $alias = $jinput->get('cid', '', 'HTML');
+        }
         $alias = str_replace(":", "-", $alias);
         $db = JFactory::getDBO();
         $query = $db->getQuery(true);
