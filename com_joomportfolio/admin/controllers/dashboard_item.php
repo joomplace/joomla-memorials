@@ -11,7 +11,6 @@ defined('_JEXEC') or die('Restricted access');
 
 class JoomPortfolioControllerDashboard_item extends JControllerForm
 {
-
     public function save()
     {
         $requestData = $this->input->post->get('jform', array(), 'array');
@@ -24,13 +23,13 @@ class JoomPortfolioControllerDashboard_item extends JControllerForm
 
         if (!$form)
         {
-            JError::raiseError(500, $model->getError());
+            $this->setMessage($model->getError(), 'error');
+            $this->setRedirect('index.php?option=com_joomportfolio&view=dashboard_item&layout=edit&id='.(int)$requestData['id']);
             return false;
         }
 
-
         if(!$model->check($requestData)){
-            $this->setMessage($model->getError());
+            $this->setMessage($model->getError(), 'error');
             $this->setRedirect('index.php?option=com_joomportfolio&view=dashboard_item&layout=edit&id='.(int)$requestData['id']);
             return false;
         }

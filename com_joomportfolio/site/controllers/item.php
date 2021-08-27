@@ -141,10 +141,11 @@ class JoomPortfolioControllerItem extends JControllerLegacy {
     }
 
     public function changeStudentLimit() {
+        $input = JFactory::getApplication()->input;
         $data = array();
-        $Itemid = intval(JRequest::getVar('Itemid'));
-        $limit = intval(JRequest::getVar('limit'));
-        $ext = JFactory::getApplication()->input->get('ext');
+        $Itemid = $input->getInt('Itemid');
+        $limit = $input->getInt('limit');
+        $ext = $input->get('ext');
         $model = $this->getModel('Item');
         $mode_cat = $this->getModel('category');
         $students = $model->studentsChangeLimit();
@@ -161,13 +162,14 @@ class JoomPortfolioControllerItem extends JControllerLegacy {
     }
 
     public function changeStudentPage() {
+        $input = JFactory::getApplication()->input;
         $data = array();
-        $Itemid = intval(JRequest::getVar('Itemid'));
+        $Itemid = $input->getInt('Itemid');
         $model = $this->getModel('Item');
         $mode_cat = $this->getModel('category');
         $students = $model->studentsChangePage();
         $params = JoomPortfolioHelper::getSettings();
-        $ext = JFactory::getApplication()->input->get('ext');
+        $ext = $input->get('ext');
         $fields = $mode_cat->searchFields($Itemid, $ext);
         for ($i = 0; $i < count($students); $i++) {
             $students[$i]->rating = $model->getRating($students[$i]->item_id, NULL, NULL);

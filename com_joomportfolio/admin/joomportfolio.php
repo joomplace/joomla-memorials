@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
 // Access check.
 if (!JFactory::getUser()->authorise('core.manage', 'com_joomportfolio')) 
 {
-	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+    throw new JAccessExceptionNotallowed(JText::_('JERROR_ALERTNOAUTHOR'), 403);
 }
 
 // require helper file

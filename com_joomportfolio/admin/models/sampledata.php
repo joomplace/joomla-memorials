@@ -442,7 +442,7 @@ class JoomPortfolioModelSampledata extends JModelLegacy
             $all_language = $table->language == '*';
 
             if ($all_language && !empty($associations)) {
-                JError::raiseNotice(403, JText::_('COM_CATEGORIES_ERROR_ALL_LANGUAGE_ASSOCIATED'));
+                throw new JAccessExceptionNotallowed(JText::_('COM_CATEGORIES_ERROR_ALL_LANGUAGE_ASSOCIATED'), 403);
             }
 
             $associations[$table->language] = $table->id;

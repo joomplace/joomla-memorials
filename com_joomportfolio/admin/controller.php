@@ -105,9 +105,8 @@ class JoomPortfolioController extends JControllerLegacy {
     }
 
     public function mode() {
+        $elname = JFactory::getApplication()->input->get('elname');
         $db = JFactory::getDBO();
-        $link = $_POST['link'];
-        $elname = $_POST['elname'];
         $query = $db->getQuery(true);
         $query->update('#__extensions');
         $query->set('custom_data ="' . $db->escape($elname) . '"');

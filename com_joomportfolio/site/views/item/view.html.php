@@ -28,8 +28,8 @@ class JoomPortfolioViewItem extends BaseView
             $item_id=$model->getItemId();
             $item=$model->returnItem($item_id);
             if (!$item) {
-                JError::raiseNotice('404', JText::_('COM_JOOMPORTFOLIO_NO_ITEM'));
-                $this->main_err = JError::raiseNotice('404', JText::_('COM_JOOMPORTFOLIO_ITEM_MODE_ERROR'));
+                throw new Exception(JText::_('COM_JOOMPORTFOLIO_NO_ITEM'), 404);
+                $this->main_err = JText::_('COM_JOOMPORTFOLIO_ITEM_MODE_ERROR');
                 parent::display($tpl);
             }
         }
@@ -72,9 +72,10 @@ class JoomPortfolioViewItem extends BaseView
                 $this->rating = $this->getRatingStars($item->id, $item->rating_sum, $item->rating_count);
             }
             $this->settings = JoomPortfolioHelper::getSetting($mode);
-            if (!empty($errors = $model->getErrors())) {
-                JError::raiseError(500, implode('<br />', $errors));
-                return false;
+
+            $errors = $this->get('Errors');
+            if (!empty($errors)) {
+                throw new Exception(implode("\n", $errors), 500);
             }
 
             $this->item = $item;

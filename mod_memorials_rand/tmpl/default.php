@@ -1,7 +1,7 @@
 <?php
 /**
- * Testimonials Module for Joomla 1.6
- * @package Testimonials
+ * JoomPortfolio module for Joomla 3.0
+ * @package JoomPortfolio
  * @author JoomPlace Team
  * @copyright Copyright (C) JoomPlace, www.joomplace.com
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html

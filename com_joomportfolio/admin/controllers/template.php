@@ -46,7 +46,8 @@ class JoomPortfolioControllerTemplate extends JControllerForm {
 
         if (!$form)
         {
-            JError::raiseError(500, $model->getError());
+            $this->setMessage($model->getError(), 'error');
+            $this->setRedirect('index.php?option=com_joomportfolio&view=template&layout=edit&id='.(int)$requestData['id']);
             return false;
         }
 
@@ -135,7 +136,7 @@ class JoomPortfolioControllerTemplate extends JControllerForm {
         if (is_writeable($file_path))
         {
 
-            $content = $jinput->get('css','','HTML');//JRequest::getVar('css');
+            $content = $jinput->get('css','','HTML');
             if (JFile::write($file_path,$content))
             {
                 $this->setMessage(JText::_('COM_JOOMPORTFOLIO_TEMPLATE_SAVESUCCESS'));

@@ -172,11 +172,10 @@ class JoomPortfolioModelField extends JModelAdmin
 
             if ($data['name'] == '' || $data['label'] == '') {
                 if ($data['name'] == '') {
-                    JError::raiseWarning(404,JText::_('COM_JOOMPORTFOLIO_ERROR_MACHIN_NAME'), 'Warning' );
-
+                    throw new Exception(JText::_('COM_JOOMPORTFOLIO_ERROR_MACHIN_NAME'), 404);
                 }
                 if ($data['label'] == '') {
-                    JError::raiseWarning(404,JText::_('COM_JOOMPORTFOLIO_ERROR_LABEL'), 'Warning' );
+                    throw new Exception(JText::_('COM_JOOMPORTFOLIO_ERROR_LABEL'), 404);
                 }
                 JFactory::getApplication()->redirect('index.php?option=com_joomportfolio&view=field&layout=edit&id='.(int)$data['id']);
                 return false;

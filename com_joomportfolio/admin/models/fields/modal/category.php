@@ -106,7 +106,7 @@ class JFormFieldModal_Category extends JFormField
 			$title = $db->loadResult();
 		}
 		catch (RuntimeException $e) {
-			JError::raiseWarning(500, $e->getMessage());
+            throw new Exception($e->getMessage(), 500, $e);
 		}
 
 		if (empty($title)) {

@@ -1,4 +1,11 @@
 <?php
+/**
+ * JoomPortfolio plugin for Joomla 3.0
+ * @package JoomPortfolio
+ * @author JoomPlace Team
+ * @copyright Copyright (C) JoomPlace, www.joomplace.com
+ * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ */
 defined('_JEXEC') or die;
 
 jimport('joomla.plugin.plugin');

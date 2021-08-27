@@ -25,10 +25,11 @@ class JoomPortfolioViewTemplates extends JViewLegacy
         $this->form = $this->get('Form');
         $this->pagination = $this->get('Pagination');
 
-        if (count($errors = $this->get('Errors'))) {
-            JError::raiseError(500, implode("\n", $errors));
-            return false;
+        $errors = $this->get('Errors');
+        if (!empty($errors)) {
+            throw new Exception(implode("\n", $errors), 500);
         }
+
         JoomPortfolioHelper::addManagementSubmenu('templates');
         $this->sidebar = JHtmlSidebar::render();
         $this->addToolBar();

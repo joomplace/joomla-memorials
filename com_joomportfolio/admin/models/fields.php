@@ -77,31 +77,30 @@ class JoomPortfolioModelFields extends JModelList {
         return $value;
     }
 
-    protected function getListQuery() {
+    protected function getListQuery()
+    {
         $mode =JoomPortfolioHelper::getMode(); /*JFactory::getApplication()->input->cookie->get('name');*/
+
         $db = $this->_db;
         $query = $db->getQuery(true);
-
         $query->select('*');
         $query->from('#__jp3_field ');
-         $query->where('mode="' . $mode . '"');
+        $query->where('mode="' . $mode . '"');
 
         $search = trim($this->getState('filter.search'));
-        //var_dump($_POST);die();
         if (!empty($search)) {
             if (stripos($search, 'id:') === 0) {
                 $query->where('id = ' . (int) substr($search, 3));
             } else {
                 $search = $this->_db->quote('%' . $search . '%', true);
-
                 $query->where('(mode="' . $mode . '" AND name LIKE ' . $search . ' OR label  LIKE ' . $search . ')');
             }
         }
 
         $orderCol = $this->state->get('list.ordering', 'id');
-      $orderDirn = $this->state->get('list.direction', 'ASC');
-      $query->order($db->escape($orderCol . ' ' . $orderDirn));
-      //  $query->order($db->escape($this->getState('list.ordering', 'i.title')) . ' ' . $db->escape($this->getState('list.direction', 'ASC')));
+        $orderDirn = $this->state->get('list.direction', 'ASC');
+        $query->order($db->escape($orderCol . ' ' . $orderDirn));
+
         return $query;
     }
 

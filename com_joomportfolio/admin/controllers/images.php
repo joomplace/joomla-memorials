@@ -64,7 +64,7 @@ class JoomPortfolioControllerImages extends JControllerForm
         $db = JFactory::getDbo();
         $app = JFactory::getApplication();
 
-        $ids = JRequest::getVar('cid');
+        $ids = $app->input->get('cid');
         $count = count($ids);
         foreach ($ids AS $id) {
             $query = $db->getQuery(true);
@@ -102,21 +102,22 @@ class JoomPortfolioControllerImages extends JControllerForm
         $doc = JFactory::getDocument();
 
         # only 2 image types allowed - 1 and 2
-        $imageType = JRequest::getInt('ornament-type', 0);
+        $imageType = $app->input->getInt('ornament-type', 0);
         if ( $imageType != 1 && $imageType != 2 ) $imageType = 1;
 
         if (!file_exists(JPATH_SITE . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'joomportfolio' . DIRECTORY_SEPARATOR . 'condolences')) {
             mkdir(JPATH_SITE . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'joomportfolio' . DIRECTORY_SEPARATOR . 'condolences');
         }
-        if (isset($_FILES['userfile'])) {
-            $imageOne = new JImage( $_FILES['userfile']['tmp_name'] );
-            $imageNewName = md5($_FILES['userfile']['tmp_name']).'.jpeg';
+
+        $userfile = $app->input->files->get('userfile', array(), 'array');
+
+        if (!empty($userfile)) {
+            $imageOne = new JImage($userfile['tmp_name']);
+            $imageNewName = md5($userfile['tmp_name']).'.jpeg';
             $imageOne->toFile( JPATH_SITE.'/images/joomportfolio/condolences/'.$imageNewName);
 
             $db = JFactory::getDbo();
-
             # set image params
-
             $imageObj = new stdClass();
             $imageObj->type = $imageType;
             $imageObj->full = $imageNewName;
