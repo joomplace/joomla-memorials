@@ -10,17 +10,15 @@ defined('_JEXEC') or die('Restricted access');
 
 class com_joomportfolioInstallerScript {
 
-    function install($parent) {
-        if (!defined('DS')) {
-            define('DS', DIRECTORY_SEPARATOR);
-        }
+    function install($parent)
+    {
         jimport('joomla.filesystem.file');
         jimport('joomla.filesystem.folder');
-        if (!JFile::exists(JPATH_SITE . DS . "images" . DS . "joomportfolio")) {
-            JFolder::create(JPATH_SITE . DS . "images" . DS . "joomportfolio", 0755);
+        if (!JFile::exists(JPATH_SITE . "/images/joomportfolio")) {
+            JFolder::create(JPATH_SITE . "/images/joomportfolio", 0755);
         }
-        if (!JFile::exists(JPATH_SITE . DS . "media" . DS . "com_joomportfolio" . DS . "custom.xml")) {
-            copy(JPATH_SITE . DS . "media" . DS . "com_joomportfolio" . DS . "custom_empty.xml", JPATH_SITE . DS . "media" . DS . "com_joomportfolio" . DS . "custom.xml");
+        if (!JFile::exists(JPATH_SITE . "/media/com_joomportfolio/custom.xml")) {
+            copy(JPATH_SITE . "/media/com_joomportfolio/custom_empty.xml", JPATH_SITE . "/media/com_joomportfolio/custom.xml");
         }
         echo '<font style="font-size:2em; color:#55AA55;" >JoomPortfolio component successfully installed.</font><br/><br/>';
 
@@ -102,19 +100,17 @@ class com_joomportfolioInstallerScript {
 		
     }
 
-    function update($parent) {
-        if (!defined('DS')) {
-            define('DS', DIRECTORY_SEPARATOR);
-        }
+    function update($parent)
+    {
         jimport('joomla.html.html');
         $database = JFactory::getDBO();
         jimport('joomla.filesystem.file');
         jimport('joomla.filesystem.folder');
-        if (!JFile::exists(JPATH_SITE . DS . "images" . DS . "joomportfolio")) {
-            JFolder::create(JPATH_SITE . DS . "images" . DS . "joomportfolio", 0755);
+        if (!JFile::exists(JPATH_SITE . "/images/joomportfolio")) {
+            JFolder::create(JPATH_SITE . "/images/joomportfolio", 0755);
         }
-        if (!JFile::exists(JPATH_SITE . DS . "media" . DS . "com_joomportfolio" . DS . "custom.xml")) {
-            copy(JPATH_SITE . DS . "media" . DS . "com_joomportfolio" . DS . "custom_empty.xml", JPATH_SITE . DS . "media" . DS . "com_joomportfolio" . DS . "custom.xml");
+        if (!JFile::exists(JPATH_SITE . "/media/com_joomportfolio/custom.xml")) {
+            copy(JPATH_SITE . "/media/com_joomportfolio/custom_empty.xml", JPATH_SITE . "/media/com_joomportfolio/custom.xml");
         }
 
         $q = "
@@ -150,11 +146,8 @@ class com_joomportfolioInstallerScript {
         $database->execute();
     }
 
-    function postflight($type, $parent) {
-        if (!defined('DS')) {
-            define('DS', DIRECTORY_SEPARATOR);
-        }
-
+    function postflight($type, $parent)
+    {
         $db = JFactory::getDBO();
         $db->setQuery('SELECT extension_id FROM #__extensions WHERE name="com_joomportfolio"');
         $c_id = (int) $db->loadResult();

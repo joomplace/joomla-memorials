@@ -469,7 +469,7 @@ class JoomPortfolioModelCategory extends JModelAdmin
             $all_language = $table->language == '*';
 
             if ($all_language && !empty($associations)) {
-                JError::raiseNotice(403, JText::_('COM_CATEGORIES_ERROR_ALL_LANGUAGE_ASSOCIATED'));
+                throw new JAccessExceptionNotallowed(JText::_('COM_CATEGORIES_ERROR_ALL_LANGUAGE_ASSOCIATED'), 403);
             }
 
             $associations[$table->language] = $table->id;
@@ -526,10 +526,11 @@ class JoomPortfolioModelCategory extends JModelAdmin
         $this->setState($this->getName() . '.id', $table->id);
         $db = JFactory::getDbo();
         $mode = JoomPortfolioHelper::getMode(); /* JFactory::getApplication()->input->cookie->get('name'); */
+        $jform = $input->get('jform', array(), 'array');
         $query = $db->getQuery(true);
-        if (isset($_POST["jform"]["description"])) {
+        if (!empty($jform["description"])) {
             $query->update('#__categories')
-                ->set('`extension`="com_' . $mode . '", description="' . $db->escape(trim($_POST["jform"]["description"])) . '"')
+                ->set('`extension`="com_' . $mode . '", description="' . $db->escape(trim($jform["description"])) . '"')
                 ->where('`id`="' . $table->id . '"');
         } else {
             $query->update('#__categories')
@@ -1175,8 +1176,7 @@ class JoomPortfolioModelCategory extends JModelAdmin
 
             if ($data['title'] == '') {
                 if ($data['title'] == '') {
-                    JError::raiseWarning(404, JText::_('COM_JOOMPORTFOLIO_ERROR_TITLE'));
-
+                    throw new Exception(JText::_('COM_JOOMPORTFOLIO_ERROR_TITLE'), 404);
                 }
 
                 JFactory::getApplication()->redirect('index.php?option=com_joomportfolio&view=category&layout=edit&extension=com_content&id=' . (int)$data['id']);

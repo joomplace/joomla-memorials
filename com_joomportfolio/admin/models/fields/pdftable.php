@@ -57,8 +57,7 @@ class JFormFieldPdftable extends JFormField
 	protected function getAction()
 	{
 		$action = '';
-		//'index.php?option=com_media&task=file.upload&'.$session->getName().'='.$session->getId().'&'.JUtility::getToken().'=1&format=json&folder=com_joomportfolio';
-		
+
 		// get base
 		$base = $this->element['action'] ? (string) $this->element['action'] : 'index.php?option=com_media&task=file.upload&format=json&tmpl=component';
 		
@@ -67,7 +66,7 @@ class JFormFieldPdftable extends JFormField
 		$session = '&'.$session->getName().'='.$session->getId();
 		
 		// get token
-		$token = '&'.JUtility::getToken().'=1';
+		$token = '&'.JSession::getFormToken().'=1';
 		
 		// get folder
 		$folder = $this->element['folder'] ? '&folder='.$this->element['folder'] : '';

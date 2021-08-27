@@ -123,14 +123,14 @@ class JoomPortfolioModelDashboard_item extends JModelAdmin
             if ($data['title'] == '' || $data['icon']=='' || $data['url']=='') {
 
                 if ($data['title'] == '') {
-                    JError::raiseWarning(404,JText::_('COM_JOOMPORTFOLIO_ERROR_TITLE'), 'Warning' );
+                    throw new Exception(JText::_('COM_JOOMPORTFOLIO_ERROR_TITLE'), 404);
                 }
                 if ($data['icon']=='') {
-                    JError::raiseWarning(404,JText::_('COM_JOOMPORTFOLIO_DASHBOARD_ERROR_ICON'), 'Warning' );
+                    throw new Exception(JText::_('COM_JOOMPORTFOLIO_DASHBOARD_ERROR_ICON'), 404);
                 }
 
                 if ($data['url']=='') {
-                    JError::raiseWarning(404,JText::_('COM_JOOMPORTFOLIO_DASHBOARD_ERROR_URL'), 'Warning' );
+                    throw new Exception(JText::_('COM_JOOMPORTFOLIO_DASHBOARD_ERROR_URL'), 404);
                 }
                 JFactory::getApplication()->redirect('index.php?option=com_joomportfolio&view=dashboard_item&layout=edit&id='.(int)$data['id']);
                 return false;

@@ -1,15 +1,16 @@
 <?php
+/**
+ * JoomPortfolio module for Joomla 3.0
+ * @package JoomPortfolio
+ * @author JoomPlace Team
+ * @copyright Copyright (C) JoomPlace, www.joomplace.com
+ * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ */
+defined('_JEXEC') or die;
 
 $link = '';
-
-
-?>
-
-
-<?php
 $count = count($list);
 if ($params->get('show_caption')) {
-
     ?>
     <div class='mod_memorials_caption'>
         <?php echo $list[$i]->item_title;?>
@@ -20,7 +21,8 @@ if ($params->get('show_caption')) {
 <span class="mod_memorials_text">
 		    <span class='mod_memorials_text_line' style='line-height:inherit;display:none;'></span>
 
-    <?php if ($params->get('show_avatar_module')) {
+    <?php
+    if ($params->get('show_avatar_module')) {
         if (!empty($list[$i]->photo)) {
             ?>
             <div class="tstmnl_avatar"><img
@@ -28,10 +30,7 @@ if ($params->get('show_caption')) {
                 style="float:left; max-height: 200px;"></div><?php
         }
     }
-    ?>
 
-
-    <?php
     //  if ((int)$params->get('show_readmore') == 1) {
     if ($modal) {
 
@@ -47,4 +46,3 @@ if ($params->get('show_caption')) {
 		</span>
 
 <br style="clear:both;"/>
-

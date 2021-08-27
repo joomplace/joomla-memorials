@@ -37,10 +37,11 @@ class JoomPortfolioViewItems extends JViewLegacy
         $this->pagination = $this->get('Pagination');
 
         // Check for errors.
-        if (count($errors = $this->get('Errors'))) {
-            JError::raiseError(500, implode('<br />', $errors));
-            return false;
+        $errors = $this->get('Errors');
+        if (!empty($errors)) {
+            throw new Exception(implode("\n", $errors), 500);
         }
+
         JoomPortfolioHelper::addManagementSubmenu('items');
         $this->sidebar = JHtmlSidebar::render();
         // Set the toolbar

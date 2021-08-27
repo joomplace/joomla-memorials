@@ -46,8 +46,9 @@ class JoomPortfolioControllerUploader extends JControllerForm
         $input = JFactory::getApplication()->input;
         $rEFileTypes =  "/^\.(jpg|jpeg|gif|png|bmp|xcf|odg){1}$/i";
         $return = array();
+        $files = $input->files->get('files', array(), 'array');
 
-        if(!empty($_FILES['files']['tmp_name'])) {
+        if(!empty($files['tmp_name'])) {
             $id = (int)$input->get('item_id');
             $user = JFactory::getUser();
             if(!$user->authorise('core.create', 'com_joomportfolio') && !$user->authorise('core.edit', 'com_joomportfolio')){
@@ -61,7 +62,7 @@ class JoomPortfolioControllerUploader extends JControllerForm
                 die();
             }
             jimport( 'joomla.filesystem.file' );
-            $totalFiles = count($_FILES['files']['tmp_name']);
+            $totalFiles = count($files['tmp_name']);
             
             $params = JComponentHelper::getParams('com_joomportfolio');
             $image_path = JPATH_SITE . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'joomportfolio' . DIRECTORY_SEPARATOR . $id . DIRECTORY_SEPARATOR;
@@ -82,12 +83,12 @@ class JoomPortfolioControllerUploader extends JControllerForm
             }
 
             for($i=0;$i<$totalFiles;$i++){
-                $old_name = JFile::getName($_FILES['files']['name'][$i]);
-                $ext = JFile::getExt($_FILES['files']['name'][$i]);
-                $new_name = md5(time() . $_FILES['files']['name'][$i]) . '.' . $ext;
+                $old_name = JFile::getName($files['name'][$i]);
+                $ext = JFile::getExt($files['name'][$i]);
+                $new_name = md5(time() . $files['name'][$i]) . '.' . $ext;
                 if (preg_match($rEFileTypes, strrchr($new_name, '.'))) {
 
-                    if(JFile::upload($_FILES['files']['tmp_name'][$i], $image_path .'original' . DIRECTORY_SEPARATOR . $new_name)){
+                    if(JFile::upload($files['tmp_name'][$i], $image_path .'original' . DIRECTORY_SEPARATOR . $new_name)){
                         if(JFile::exists($image_path . 'original' . DIRECTORY_SEPARATOR . $new_name)){
                             $JimgHelper = new JimgHelper();
                             $thumb = $JimgHelper->captureImage($JimgHelper->resize($image_path .'original' . DIRECTORY_SEPARATOR . $new_name, $params->get('th_width', '500'), $params->get('th_height', '500')), $new_name);
@@ -125,8 +126,8 @@ class JoomPortfolioControllerUploader extends JControllerForm
 
                             try {
                                 $db->execute();
-                            } catch (Exception $e) {
-                                JError::raiseError(100, $e->getMessage);
+                            } catch (RuntimeException $e) {
+                                throw new Exception($e->getMessage(), 500, $e);
                             }
 
 
@@ -214,12 +215,12 @@ class JoomPortfolioControllerUploader extends JControllerForm
 
     function addPdf()
     {
-
         $input = JFactory::getApplication()->input;
         $rEFileTypes = "/^\.(pdf){1}$/i";
         $return = array();
+        $files = $input->files->get('files', array(), 'array');
 
-        if(!empty($_FILES['files']['tmp_name'])) {
+        if(!empty($files['tmp_name'])) {
             $id = (int)$input->get('item_id');
 
             $user = JFactory::getUser();
@@ -234,7 +235,7 @@ class JoomPortfolioControllerUploader extends JControllerForm
                 die();
             }
             jimport( 'joomla.filesystem.file' );
-            $totalFiles = count($_FILES['files']['tmp_name']);
+            $totalFiles = count($files['tmp_name']);
 
             $params = JComponentHelper::getParams('com_joomportfolio');
             $image_path = JPATH_SITE . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'joomportfolio' . DIRECTORY_SEPARATOR . $id . DIRECTORY_SEPARATOR;
@@ -248,13 +249,13 @@ class JoomPortfolioControllerUploader extends JControllerForm
 
 
             for($i=0;$i<$totalFiles;$i++){
-                $old_name = JFile::getName($_FILES['files']['name'][$i]);
-                $ext = JFile::getExt($_FILES['files']['name'][$i]);
-                $new_name = md5(time() . $_FILES['files']['name'][$i]) . '.' . $ext;
+                $old_name = JFile::getName($files['name'][$i]);
+                $ext = JFile::getExt($files['name'][$i]);
+                $new_name = md5(time() . $files['name'][$i]) . '.' . $ext;
 
                 if (preg_match($rEFileTypes, strrchr($new_name, '.'))) {
 
-                    if(JFile::upload($_FILES['files']['tmp_name'][$i], $image_path .'media' . DIRECTORY_SEPARATOR . $new_name)){
+                    if(JFile::upload($files['tmp_name'][$i], $image_path .'media' . DIRECTORY_SEPARATOR . $new_name)){
                         if(JFile::exists($image_path . 'media' . DIRECTORY_SEPARATOR . $new_name)){
 
                             $return['files'][0]['file_type']='PDF';
@@ -285,8 +286,8 @@ class JoomPortfolioControllerUploader extends JControllerForm
 
                             try {
                                 $db->execute();
-                            } catch (Exception $e) {
-                                JError::raiseError(100, $e->getMessage);
+                            } catch (RuntimeException $e) {
+                                throw new Exception($e->getMessage(), 500, $e);
                             }
 
 
@@ -365,12 +366,12 @@ class JoomPortfolioControllerUploader extends JControllerForm
 
     function addAudio()
     {
-
         $input = JFactory::getApplication()->input;
         $rEFileTypes =  "/^\.(wav|mp3){1}$/i";
         $return = array();
+        $files = $input->files->get('files', array(), 'array');
 
-        if(!empty($_FILES['files']['tmp_name'])) {
+        if(!empty($files['tmp_name'])) {
             $id = (int)$input->get('item_id');
             $user = JFactory::getUser();
             if(!$user->authorise('core.create', 'com_joomportfolio') && !$user->authorise('core.edit', 'com_joomportfolio')){
@@ -384,7 +385,7 @@ class JoomPortfolioControllerUploader extends JControllerForm
                 die();
             }
             jimport( 'joomla.filesystem.file' );
-            $totalFiles = count($_FILES['files']['tmp_name']);
+            $totalFiles = count($files['tmp_name']);
 
             $params = JComponentHelper::getParams('com_joomportfolio');
             $image_path = JPATH_SITE . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'joomportfolio' . DIRECTORY_SEPARATOR . $id . DIRECTORY_SEPARATOR;
@@ -403,12 +404,12 @@ class JoomPortfolioControllerUploader extends JControllerForm
              }*/
 
             for($i=0;$i<$totalFiles;$i++){
-                $old_name = JFile::getName($_FILES['files']['name'][$i]);
-                $ext = JFile::getExt($_FILES['files']['name'][$i]);
-                $new_name = md5(time() . $_FILES['files']['name'][$i]) . '.' . $ext;
+                $old_name = JFile::getName($files['name'][$i]);
+                $ext = JFile::getExt($files['name'][$i]);
+                $new_name = md5(time() . $files['name'][$i]) . '.' . $ext;
                 //die(var_dump(preg_match($rEFileTypes, strrchr($new_name, '.'))));
                 if (preg_match($rEFileTypes, strrchr($new_name, '.'))) {
-                    if(JFile::upload($_FILES['files']['tmp_name'][$i], $image_path .'audio' . DIRECTORY_SEPARATOR . $new_name)){
+                    if(JFile::upload($files['tmp_name'][$i], $image_path .'audio' . DIRECTORY_SEPARATOR . $new_name)){
                         if(JFile::exists($image_path . 'audio' . DIRECTORY_SEPARATOR . $new_name)){
                             $return['files'][0]['file_type']='AUDIO';
                             $return['files'][$i]['image'] = $new_name;
@@ -438,8 +439,8 @@ class JoomPortfolioControllerUploader extends JControllerForm
 
                             try {
                                 $db->execute();
-                            } catch (Exception $e) {
-                                JError::raiseError(100, $e->getMessage);
+                            } catch (RuntimeException $e) {
+                                throw new Exception($e->getMessage(), 500, $e);
                             }
 
 
@@ -461,13 +462,14 @@ class JoomPortfolioControllerUploader extends JControllerForm
     }
 
 
-    function addVideo(){
+    function addVideo()
+    {
+        $input = JFactory::getApplication()->input;
+        $rEFileTypes =  "/^\.(webm|mp4|ogg){1}$/i";
+        $return = array();
+        $files = $input->files->get('files', array(), 'array');
 
-            $input = JFactory::getApplication()->input;
-            $rEFileTypes =  "/^\.(webm|mp4|ogg){1}$/i";
-            $return = array();
-
-            if(!empty($_FILES['files']['tmp_name'])) {
+            if(!empty($files['tmp_name'])) {
                 $id = (int)$input->get('item_id');
                 $user = JFactory::getUser();
                 if(!$user->authorise('core.create', 'com_joomportfolio') && !$user->authorise('core.edit', 'com_joomportfolio')){
@@ -481,7 +483,7 @@ class JoomPortfolioControllerUploader extends JControllerForm
                     die();
                 }
                 jimport( 'joomla.filesystem.file' );
-                $totalFiles = count($_FILES['files']['tmp_name']);
+                $totalFiles = count($files['tmp_name']);
 
                 $params = JComponentHelper::getParams('com_joomportfolio');
                 $image_path = JPATH_SITE . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'joomportfolio' . DIRECTORY_SEPARATOR . $id . DIRECTORY_SEPARATOR;
@@ -500,12 +502,12 @@ class JoomPortfolioControllerUploader extends JControllerForm
                  }*/
 
                 for($i=0;$i<$totalFiles;$i++){
-                    $old_name = JFile::getName($_FILES['files']['name'][$i]);
-                    $ext = JFile::getExt($_FILES['files']['name'][$i]);
-                    $new_name = md5(time() . $_FILES['files']['name'][$i]) . '.' . $ext;
+                    $old_name = JFile::getName($files['name'][$i]);
+                    $ext = JFile::getExt($files['name'][$i]);
+                    $new_name = md5(time() . $files['name'][$i]) . '.' . $ext;
                     //die(var_dump(preg_match($rEFileTypes, strrchr($new_name, '.'))));
                     if (preg_match($rEFileTypes, strrchr($new_name, '.'))) {
-                        if(JFile::upload($_FILES['files']['tmp_name'][$i], $image_path .'video' . DIRECTORY_SEPARATOR . $new_name)){
+                        if(JFile::upload($files['tmp_name'][$i], $image_path .'video' . DIRECTORY_SEPARATOR . $new_name)){
                             if(JFile::exists($image_path . 'video' . DIRECTORY_SEPARATOR . $new_name)){
                                 $return['files'][0]['file_type']='VIDEO';
                                 $return['files'][$i]['image'] = $new_name;
@@ -533,8 +535,8 @@ class JoomPortfolioControllerUploader extends JControllerForm
 
                                 try {
                                     $db->execute();
-                                } catch (Exception $e) {
-                                    JError::raiseError(100, $e->getMessage);
+                                } catch (RuntimeException $e) {
+                                    throw new Exception($e->getMessage(), 500, $e);
                                 }
 
 

@@ -145,11 +145,10 @@ class JoomPortfolioModelComment extends JModelAdmin
 
             if ($data['title'] == '' || !isset($data['item_id'])) {
                 if ($data['title'] == '') {
-                    JError::raiseWarning(404,JText::_('COM_JOOMPORTFOLIO_ERROR_TITLE'), 'Warning' );
-
+                    throw new Exception(JText::_('COM_JOOMPORTFOLIO_ERROR_TITLE'), 404);
                 }
                 if (!isset($data['item_id'])) {
-                    JError::raiseWarning(404,JText::_('COM_JOOMPORTFOLIO_ERROR_ITEM'), 'Warning' );
+                    throw new Exception(JText::_('COM_JOOMPORTFOLIO_ERROR_ITEM'), 404);
                 }
                 JFactory::getApplication()->redirect('index.php?option=com_joomportfolio&view=comment&layout=edit&id='.(int)$data['id']);
                 return false;

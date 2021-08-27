@@ -20,9 +20,8 @@ class JoomPortfolioViewMain extends BaseView
 
         $mode = JoomPortfolioHelper::getVarMode();
         if (!isset($mode)) {
-            JError::raiseNotice('404', JText::_('COM_JOOMPORTFOLIO_NO_ITEM'));
-
-            $this->main_err =  JError::raiseNotice('404', JText::_('COM_JOOMPORTFOLIO_MAIN_MODE_ERROR'));
+            throw new Exception(JText::_('COM_JOOMPORTFOLIO_NO_ITEM'), 404);
+            $this->main_err =  JText::_('COM_JOOMPORTFOLIO_MAIN_MODE_ERROR');
             parent::display($tpl);
         } else {
 
@@ -30,9 +29,10 @@ class JoomPortfolioViewMain extends BaseView
 
             $this->params = $model->getState('params');
             $this->settings = JoomPortfolioHelper::getSettings();
-            if (!empty($errors = $this->get('Errors'))) {
-                JError::raiseError(500, implode('<br />', $errors));
-                return false;
+
+            $errors = $this->get('Errors');
+            if (!empty($errors)) {
+                throw new Exception(implode("\n", $errors), 500);
             }
 
             parent::display($tpl);

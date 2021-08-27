@@ -23,7 +23,7 @@ class JoomPortfolioViewCategory extends JViewLegacy
         if ($cat_id == '' && $cid == '') {
             $cat_id = $model->getCatIdByItemId();
             if (!$cat_id) {
-                JError::raiseNotice('404', JText::_('COM_JOOMPORTFOLIO_NO_CATEGORY'));
+                throw new Exception(JText::_('COM_JOOMPORTFOLIO_NO_CATEGORY'), 404);
                 $this->main_err = "Mode is not selected in category view";
                 parent::display($tpl);
             }
@@ -76,9 +76,9 @@ class JoomPortfolioViewCategory extends JViewLegacy
 
             $this->settings = JoomPortfolioHelper::getSettings();
 
-            if (!empty($errors = $this->get('Errors'))) {
-                JError::raiseError(500, implode('<br />', $errors));
-                return false;
+            $errors = $this->get('Errors');
+            if (!empty($errors)) {
+                throw new Exception(implode("\n", $errors), 500);
             }
 
             parent::display($tpl);

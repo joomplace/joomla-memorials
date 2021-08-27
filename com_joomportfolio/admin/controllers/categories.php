@@ -6,9 +6,10 @@
  * @Copyright Copyright (C) JoomPlace, www.joomplace.com
  * @license GNU/GPL http://www.gnu.org/copyleft/gpl.html
  */
-// no direct access
 
 defined('_JEXEC') or die;
+
+use Joomla\Utilities\ArrayHelper;
 
 class JoomPortfolioControllerCategories extends JControllerAdmin
 {
@@ -104,7 +105,7 @@ class JoomPortfolioControllerCategories extends JControllerAdmin
 
 		if (!is_array($cid) || count($cid) < 1)
 		{
-			JError::raiseWarning(500, JText::_($this->text_prefix . '_NO_ITEM_SELECTED'));
+            JFactory::getApplication()->enqueueMessage(JText::_($this->text_prefix . '_NO_ITEM_SELECTED'), 'warning');
 		}
 		else
 		{
@@ -113,7 +114,7 @@ class JoomPortfolioControllerCategories extends JControllerAdmin
 
 			// Make sure the item ids are integers
 			jimport('joomla.utilities.arrayhelper');
-			JArrayHelper::toInteger($cid);
+            $cid = ArrayHelper::toInteger($cid);
 
 			// Remove the items.
 			if ($model->delete($cid))

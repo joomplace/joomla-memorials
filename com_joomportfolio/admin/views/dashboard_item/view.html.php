@@ -26,10 +26,11 @@ class JoomPortfolioViewDashboard_item extends JViewLegacy
         $this->item = $this->get('Item');
         $this->state = $this->get('State');
 
-        if (count($errors = $this->get('Errors'))) {
-            JError::raiseError(500, implode('<br />', $errors));
-            return false;
+        $errors = $this->get('Errors');
+        if (!empty($errors)) {
+            throw new Exception(implode("\n", $errors), 500);
         }
+
         JoomPortfolioHelper::loadLanguage();
         $isNew = $this->item->id == 0;
         JToolBarHelper::title(JText::_('COM_JOOMPORTFOLIO') . ': ' . JText::_('COM_JOOMPORTFOLIO_DASHBOARD_ITEM_EDITING'));

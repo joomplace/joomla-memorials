@@ -42,16 +42,17 @@ class JoomPortfolioControllerComment extends JControllerForm {
         $model = $this->getModel();
 
         // Validate the posted data.
-        $form	= $model->getForm();
+        $form = $model->getForm();
 
         if (!$form)
         {
-            JError::raiseError(500, $model->getError());
+            $this->setMessage($model->getError(), 'error');
+            $this->setRedirect('index.php?option=com_joomportfolio&view=comment&layout=edit&id='.(int)$requestData['id']);
             return false;
         }
 
         if(!$model->check($requestData)){
-            $this->setMessage($model->getError());
+            $this->setMessage($model->getError(), 'error');
             $this->setRedirect('index.php?option=com_joomportfolio&view=comment&layout=edit&id='.(int)$requestData['id']);
             return false;
         }

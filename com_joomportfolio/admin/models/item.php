@@ -105,11 +105,12 @@ class JoomPortfolioModelItem extends JModelAdmin {
 
     protected function uploadFile($id = 0)
     {
-        $userfile2 = (isset($_FILES['userfile']['tmp_name']) ? $_FILES['userfile']['tmp_name'] : "");
-        $userfile_name = (isset($_FILES['userfile']['name']) ? $_FILES['userfile']['name'] : "");
+        $app = JFactory::getApplication();
+        $userfile = $app->input->files->get('userfile', array(), 'array');
+        $userfile_name = !empty($userfile['name']) ? $userfile['name'] : "";
         $ext = substr($userfile_name, -4);
         $directory = 'images/com_joomportfolio/items';
-        if (isset($_FILES['userfile'])) {
+        if (!empty($userfile)) {
             $base_Dir = JPATH_SITE . "/images/com_joomportfolio/items";
             if (!file_exists($base_Dir)) {
                 @mkdir($base_Dir, 0777);
@@ -146,7 +147,7 @@ class JoomPortfolioModelItem extends JModelAdmin {
                     type="text/javascript">alert("<?php echo JText::_('COM_JOOMPORTFOLIO_UPLOAD_ERROR4'); ?>")</script><?php
                 return;
             }
-            if (!move_uploaded_file($_FILES['userfile']['tmp_name'], $base_Dir . '/' . $userfile_name) || !JPath::setPermissions($base_Dir . '/' . $userfile_name)) {
+            if (!move_uploaded_file($userfile['tmp_name'], $base_Dir . '/' . $userfile_name) || !JPath::setPermissions($base_Dir . '/' . $userfile_name)) {
                 ?>
                 <script
                     type="text/javascript">alert("<?php echo JText::_('COM_JOOMPORTFOLIO_UPLOAD_ERROR5'); ?>")</script><?php
@@ -167,8 +168,9 @@ class JoomPortfolioModelItem extends JModelAdmin {
     {
         $input = JFactory::getApplication()->input;
         $id = $input->get('id', 0);
+        $userfile = $input->files->get('userfile', array(), 'array');
 
-        if (isset($_FILES['userfile'])) {
+        if (!empty($userfile)) {
             $this->uploadFile($id);
         }
         ?>
@@ -904,18 +906,16 @@ public function showSelectImages() {
         return false;
     }
 
-
     public function check($data)
     {
         if (count($data)) {
 
             if ($data['title'] == '' || !isset($data['cat_id'])) {
                 if ($data['title'] == '') {
-                    JError::raiseWarning(404, JText::_('COM_JOOMPORTFOLIO_ERROR_TITLE'));
-
+                    throw new Exception(JText::_('COM_JOOMPORTFOLIO_ERROR_TITLE'), 404);
                 }
                 if (!isset($data['cat_id'])) {
-                    JError::raiseWarning(404, JText::_('COM_JOOMPORTFOLIO_ERROR_CATEGORY'));
+                    throw new Exception(JText::_('COM_JOOMPORTFOLIO_ERROR_CATEGORY'), 404);
                 }
                 JFactory::getApplication()->redirect('index.php?option=com_joomportfolio&view=item&layout=edit&id=' . (int)$data['id']);
                 return false;
@@ -929,4 +929,3 @@ public function showSelectImages() {
     }
 
 }
-
