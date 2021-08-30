@@ -65,7 +65,7 @@ class JoomPortfolioViewCategory extends JViewLegacy
         JToolBarHelper::title($isNew ? JText::_('COM_CATEGORIES_CATEGORIES_TITLE') : JText::_('COM_CATEGORIES_CATEGORIES_TITLE'), 'categories');
         if ($canDo->get('core.admin')) {
             JToolBarHelper::apply('category.apply', 'JTOOLBAR_APPLY');
-            
+            JToolBarHelper::save('category.save', 'JTOOLBAR_SAVE');
             JToolBarHelper::custom('category.save2new', 'save-new.png', 'save-new_f2.png', 'JTOOLBAR_SAVE_AND_NEW', false);
             if (!$isNew) {
                 JToolBarHelper::custom('category.save2copy', 'save-copy.png', 'save-copy_f2.png', 'JTOOLBAR_SAVE_AS_COPY', false);
