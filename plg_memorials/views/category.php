@@ -198,7 +198,7 @@ $pathway->addItem($this->category->title,'');
                             var twitterScriptTag = document.createElement('script');
                             twitterScriptTag.type = 'text/javascript';
                             twitterScriptTag.async = true;
-                            twitterScriptTag.src = 'http://platform.twitter.com/widgets.js';
+                            twitterScriptTag.src = '//platform.twitter.com/widgets.js';
                             var s = document.getElementsByTagName('script')[0];
                             s.parentNode.insertBefore(twitterScriptTag, s);
                         })();
