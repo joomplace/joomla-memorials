@@ -166,7 +166,7 @@ $mode=JoomPortfolioHelper::getMode();
             if (!empty($this->custom)) {
                 $field = $this->custom;
 
-                for ($i = 0; $i < count($field); $i++) {
+                foreach($field as $i => $f) {
                     ?>
                     <div class="field">
 
