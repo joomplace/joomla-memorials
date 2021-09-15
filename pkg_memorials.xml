@@ -2,7 +2,7 @@
 <extension type="package" version="3.x" method="upgrade">
   <name>Memorials Package</name>
   <author>Joomplace Team</author>
-  <creationDate>July 2019</creationDate>
+  <creationDate>September 2021</creationDate>
   <packagename>memorials</packagename>
   <authorEmail>support@joomplace.com</authorEmail>
   <authorUrl>www.joomplace.com</authorUrl>
