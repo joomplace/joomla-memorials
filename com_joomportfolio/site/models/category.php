@@ -237,7 +237,7 @@ class JoomPortfolioModelCategory extends JModelList
             if (!$db->execute()) {
                 return NULL;
             } else {
-                $_REQUEST['id']=$id;
+                $jinput->set('id', $id);
                 return $id;
             }
         }

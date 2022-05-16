@@ -368,7 +368,7 @@ class JoomPortfolioModelItem extends BaseItem
             if (!$db->execute()) {
                 return NULL;
             } else {
-                $_REQUEST['id']=(int)$id->id;
+                $jinput->set('id', (int)$id->id);
                 return $id;
             }
         }

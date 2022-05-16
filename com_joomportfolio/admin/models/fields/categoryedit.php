@@ -9,6 +9,8 @@
 
 defined('JPATH_BASE') or die;
 
+use Joomla\Utilities\ArrayHelper;
+
 JFormHelper::loadFieldClass('list');
 
 /**
@@ -62,7 +64,7 @@ class JFormFieldCategoryEdit extends JFormFieldList
 		}*/
                 $mode = JoomPortfolioHelper::getMode();/*JFactory::getApplication()->input->cookie->get('name');*/
                 $extension='com_'.$mode;
-//die(var_dump($extension));
+
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true)
 			->select('a.id AS value, a.title AS text, a.level, a.published')
@@ -109,7 +111,7 @@ class JFormFieldCategoryEdit extends JFormFieldList
 		}
 		elseif (is_array($published))
 		{
-			JArrayHelper::toInteger($published);
+            $published = ArrayHelper::toInteger($published);
 			$query->where('a.published IN (' . implode(',', $published) . ')');
 		}
 

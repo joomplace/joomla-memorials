@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension	type="module"	version="3.0"	client="site"	method="upgrade">
-	<name>memorials</name>
+	<name>Memorials</name>
     <author>JoomPlace Team</author>
 	<creationDate>September 2021</creationDate>
 	<copyright>(C) JoomPlace, www.joomplace.com</copyright>
