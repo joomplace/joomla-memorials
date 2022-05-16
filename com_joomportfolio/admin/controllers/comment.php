@@ -104,9 +104,9 @@ class JoomPortfolioControllerComment extends JControllerForm {
         JFactory::getApplication()->close();
     }
 
-    public function edit() {
+    public function edit($key = null, $urlVar = null) {
         $input = JFactory::getApplication()->input;
-        $data = $input->get('cid', array(), 'post', 'array');
+        $data = $input->get('cid', array(), 'array');
         if (!empty($data)) {
             $this->setRedirect('index.php?option=com_joomportfolio&view=comment&layout=edit&id=' . $data[0]);
         } else {
