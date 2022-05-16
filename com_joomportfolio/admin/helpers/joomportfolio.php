@@ -287,7 +287,7 @@ class JoomPortfolioHelper {
         return $xmlFile;
     }
 
-    public static function featured($value = 0, $i) {
+    public static function featured($i, $value = 0) {
         
     }
 

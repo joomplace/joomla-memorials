@@ -29,7 +29,7 @@ class JoomPortfolioControllerSettings extends JControllerForm
         return true;
     }
 
-    public function save()
+    public function save($key = null, $urlVar = null)
     {
         $model = $this->getModel();
         try {
