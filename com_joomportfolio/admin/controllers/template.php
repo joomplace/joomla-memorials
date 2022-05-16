@@ -86,7 +86,7 @@ class JoomPortfolioControllerTemplate extends JControllerForm {
         $file_path = JPATH_PLUGINS.DIRECTORY_SEPARATOR.'portfolio'.DIRECTORY_SEPARATOR.$mode.DIRECTORY_SEPARATOR.'css'.DIRECTORY_SEPARATOR.'style.css';
         if (is_writeable($file_path))
         {
-            $editor = JFactory::getEditor('codemirror');
+            $editor = JEditor::getInstance('codemirror');
             $params = array( 'smilies'=> '0' ,
                 'style'  => '0' ,
                 'layer'  => '0' ,

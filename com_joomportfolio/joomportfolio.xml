@@ -8,6 +8,7 @@
 	<copyright>(C) JoomPlace, www.joomplace.com</copyright>
 	<license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
 	<version>2.2.0</version>
+	<description>COM_JOOMPORTFOLIO_DESC</description>
 	<scriptfile>script.php</scriptfile>
 	<install>
 		<sql>
@@ -29,9 +30,6 @@
 		<folder>views</folder>
 		<folder>models</folder>
 		<folder>controllers</folder>
-	</files>
-	<files folder="images" >
-		<filename>index.html</filename>
 	</files>
 	<administration>
 		<menu>COM_JOOMPORTFOLIO_MENU</menu>

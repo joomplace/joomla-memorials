@@ -394,10 +394,8 @@ public function showSelectImages() {
         $query->update('#__jp3_pictures')
             ->set('`is_default`="1"');
         if (ctype_digit($image_id)) {
-            error_log('int');
             $query->where('`id`=' . $image_id);
         } else {
-            error_log('string');
             $query->where('`full`="' . $image_id . '"');
         }
         $query->where('`item_id`="' . $item_id . '"');

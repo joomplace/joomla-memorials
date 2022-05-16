@@ -11,7 +11,7 @@ defined('_JEXEC') or die('Restricted access');
 
 class JoomPortfolioControllerDashboard_item extends JControllerForm
 {
-    public function save()
+    public function save($key = null, $urlVar = null)
     {
         $requestData = $this->input->post->get('jform', array(), 'array');
         $task = $this->input->post->get('task', '', 'CMD');

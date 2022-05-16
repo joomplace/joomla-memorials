@@ -8,7 +8,8 @@
     <copyright>(C) JoomPlace, www.joomplace.com</copyright>
     <license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
     <version>2.2.0</version>
-     <scriptfile>script.php</scriptfile>
+    <description>Portfolio Memorials.</description>
+    <scriptfile>script.php</scriptfile>
     <files>
         <filename plugin="memorials">memorials.php</filename>
         <filename>index.html</filename>

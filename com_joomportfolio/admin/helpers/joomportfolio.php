@@ -204,7 +204,10 @@ class JoomPortfolioHelper {
             $level = 'category';
         }
 
-        $actions = JAccess::getActions($component, $level);
+        $actions = Access::getActionsFromFile(
+            JPATH_ADMINISTRATOR . '/components/' . $component . '/access.xml',
+            "/access/section[@name='" . $level . "']/"
+        );
 
         foreach ($actions as $action) {
             $result->set($action->name, $user->authorise($action->name, $assetName));

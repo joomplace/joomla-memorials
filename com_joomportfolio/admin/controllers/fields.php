@@ -11,8 +11,7 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-// import Joomla controlleradmin library
-jimport('joomla.application.component.controlleradmin');
+use Joomla\Utilities\ArrayHelper;
 
 /**
  * Fields Controller
@@ -63,9 +62,8 @@ class JoomPortfolioControllerFields extends JControllerAdmin
         $pks = $this->input->post->get('cid', array(), 'array');
         $order = $this->input->post->get('order', array(), 'array');
 
-        // Sanitize the input
-        JArrayHelper::toInteger($pks);
-        JArrayHelper::toInteger($order);
+        $pks = ArrayHelper::toInteger($pks);
+        $order = ArrayHelper::toInteger($order);
 
         // Get the model
         $model = $this->getModel();

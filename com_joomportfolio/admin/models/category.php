@@ -10,6 +10,8 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\Utilities\ArrayHelper;
+
 /**
  * Categories Component Category Model
  *
@@ -176,7 +178,7 @@ class JoomPortfolioModelCategory extends JModelAdmin
         if ($assoc) {
             if ($result->id != null) {
                 $result->associations = CategoriesHelper::getAssociations($result->id, $result->extension);
-                JArrayHelper::toInteger($result->associations);
+                $result->associations = ArrayHelper::toInteger($result->associations);
             } else {
                 $result->associations = array();
             }
@@ -678,7 +680,7 @@ class JoomPortfolioModelCategory extends JModelAdmin
     {
         // $value comes as {parent_id}.{extension}
         $parts = explode('.', $value);
-        $parentId = (int)JArrayHelper::getValue($parts, 0, 1);
+        $parentId = (int)ArrayHelper::getValue($parts, 0, 1);
 
         $table = $this->getTable();
         $db = $this->getDbo();
@@ -940,7 +942,7 @@ class JoomPortfolioModelCategory extends JModelAdmin
         if (!empty($children)) {
             // Remove any duplicates and sanitize ids.
             $children = array_unique($children);
-            JArrayHelper::toInteger($children);
+            $children = ArrayHelper::toInteger($children);
         }
 
         return true;

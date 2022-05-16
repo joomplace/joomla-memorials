@@ -9,6 +9,7 @@
   <copyright>(C) JoomPlace, www.joomplace.com</copyright>
   <license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
   <version>2.2.0</version>
+  <description>Memorials Package.</description>
   <files folder="packages">
     <file type="component" id="com_joomportfolio">com_joomportfolio.zip</file>
     <file type="module" id="memorials" client="site">mod_memorials.zip</file>
