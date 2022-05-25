@@ -9,6 +9,8 @@
  */
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Access\Access;
+
 class JoomPortfolioHelper {
 
 

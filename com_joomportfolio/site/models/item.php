@@ -65,30 +65,33 @@ class JoomPortfolioModelItem extends BaseItem
     public function getImages()
     {
         if (!isset($this->images)) {
+            $this->images = new stdClass();
+
             $id = $this->getState('item.id');
             if(!$id){
                 $id=$this->getItemId();
             }
+
             $db = $this->getDBO();
             $query = $db->getQuery(true);
             $query->select('pii.id');
             $query->from('#__jp3_items AS pii');
             $query->where('pii.alias="' . $id.'"');
             $db->setQuery($query);
-
             $item_id = $db->loadResult();
 
-
-            $query = $db->getQuery(true);
-            $query->select('pii.*');
-            $query->from('#__jp3_pictures AS pii');
-            $query->where('pii.item_id=' . $item_id);
-            $query->order('is_default DESC');
-            $query->order('ordering');
-            $db->setQuery($query);
-
-            $this->images = $db->loadObjectList();
+            if(!empty($item_id)) {
+                $query = $db->getQuery(true);
+                $query->select('pii.*');
+                $query->from('#__jp3_pictures AS pii');
+                $query->where('pii.item_id=' . $item_id);
+                $query->order('is_default DESC');
+                $query->order('ordering');
+                $db->setQuery($query);
+                $this->images = $db->loadObjectList();
+            }
         }
+
         return $this->images;
     }
 
@@ -376,22 +379,30 @@ class JoomPortfolioModelItem extends BaseItem
 
     }
 
-    public function getItemId(){
+    public function getItemId()
+    {
         $jinput = JFactory::getApplication()->input;
         $itemid = $jinput->get('Itemid', 0, 'INT');
-        $db = JFactory::getDbo();
 
+        $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query->select('params')
             ->from('`#__menu`')
             ->where('id=' . (int)$itemid);
         $db->setQuery($query);
         $params= $db->loadResult();
-        $settings=json_decode($params);
-        $cur_cat=(int)$settings->id;
+
+        $cur_cat = 0;
+
+        if(!empty($params)) {
+            $settings=json_decode($params);
+            if(!empty($settings->id)) {
+                $cur_cat=(int)$settings->id;
+            }
+        }
+
         return $cur_cat;
     }
-
 
     public function returnItem($id){
         $db = $this->getDBO();
