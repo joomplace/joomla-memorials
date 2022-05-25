@@ -42,6 +42,20 @@ $sortFields = $this->getSortFields();
         }
         Joomla.tableOrdering(order, dirn, '');
     }
+
+    Joomla.submitbutton = function(task) {
+        if (task == 'items.export') {
+            if (document.adminForm.boxchecked.value == 0) {
+                alert(Joomla.JText._('JLIB_HTML_PLEASE_MAKE_A_SELECTION_FROM_THE_LIST'));
+                return false;
+            } else {
+                Joomla.submitform(task);
+            }
+
+        }
+
+        Joomla.submitform(task);
+    }
 </script>
 <?php echo $this->loadTemplate('menu'); ?>
 <?php if (!empty($this->sidebar)) : ?>
