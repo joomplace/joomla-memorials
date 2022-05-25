@@ -49,7 +49,7 @@ JHtml::_('behavior.tooltip');
             <tr>
                 <td><?php echo JText::_('COM_JOOMPORTFOLIO_ABOUT_SF') . ':'; ?></td>
                 <td>
-                    <a target="_blank" href="http://www.JoomPlace.com/support" >http://www.JoomPlace.com/support</a>
+                    <a href="https://www.joomplace.com/support/helpdesk.html" target="_blank" rel="noopener noreferrer">https://www.joomplace.com/support/helpdesk.html</a>
                 </td>
             </tr>
             <tr>
