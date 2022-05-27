@@ -72,6 +72,7 @@ class JoomPortfolioControllerItems extends JControllerAdmin
         $pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
         $pdf->SetPrintHeader(false);
         $pdf->SetPrintFooter(false);
+        $pdf->SetFont('dejavusans', '', 12, '', true);
 
         for ($i = 0; $i < $count_cid; $i++) {
             $html = '';
