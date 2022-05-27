@@ -65,8 +65,6 @@ class JoomPortfolioModelItem extends BaseItem
     public function getImages()
     {
         if (!isset($this->images)) {
-            $this->images = new stdClass();
-
             $id = $this->getState('item.id');
             if(!$id){
                 $id=$this->getItemId();
@@ -89,6 +87,8 @@ class JoomPortfolioModelItem extends BaseItem
                 $query->order('ordering');
                 $db->setQuery($query);
                 $this->images = $db->loadObjectList();
+            } else {
+                $this->images = array();
             }
         }
 
